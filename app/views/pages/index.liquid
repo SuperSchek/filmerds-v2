@@ -1,0 +1,40 @@
+---
+title: Home page
+published: true
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"> <!-- Set character encoding for the document -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ site.name }}</title>
+    <meta name="keywords" value="{{ site.meta_keywords }}" />
+    <meta name="description" value="{{ site.meta_description }}" />
+
+    {{ 'style.min.css' | stylesheet_tag }}
+  </head>
+  <body>
+    {% block 'main' %}
+
+      {% include jumbo_styles %}
+
+      <img src="{{ 'filmerds_pixel.jpg' | theme_image_url }}" />
+
+      <div class="jumbotron">
+        <div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+      </div>
+
+    {% endblock %}
+  </body>
+</html>

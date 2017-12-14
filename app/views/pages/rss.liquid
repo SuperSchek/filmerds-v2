@@ -1,0 +1,37 @@
+---
+title: Rss
+listed: false
+published: true
+response_type: application/xml
+---
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+  <channel>
+    <title>{{ site.metafields.rss_settings.title }}</title>
+    <link>{{ site.metafields.rss_settings.link }}</link>
+    <language>{{ site.metafields.rss_settings.language }}</language>
+
+    <copyright>{{ site.metafields.rss_settings.copyright }}</copyright>
+
+    <itunes:subtitle>
+      {{ site.metafields.rss_settings.subtitle }}
+    </itunes:subtitle>
+
+    <itunes:author>{{ site.metafields.rss_settings.author }}</itunes:author>
+    <itunes:summary>Love to get outdoors and discover nature&apos;s treasures? Hiking Treks is the show for you. We review hikes and excursions, review outdoor gear and interview a variety of naturalists and adventurers. Look for new episodes each week.</itunes:summary>
+    <description>Love to get outdoors and discover nature&apos;s treasures? Hiking Treks is the show for you. We review hikes and excursions, review outdoor gear and interview a variety of naturalists and adventurers. Look for new episodes each week.</description>
+    <itunes:type>{{ site.metafields.rss_settings.type }}</itunes:type>
+    <itunes:owner>
+      <itunes:name>{{ site.metafields.rss_settings.owner_name }}</itunes:name>
+      <itunes:email>{{ site.metafields.rss_settings.owner_email }}</itunes:email>
+    </itunes:owner>
+    <itunes:image href="http://podcasts.apple.com/resources/example/hiking_treks/images/cover_art.jpg"/>
+    <itunes:category text="Sports &amp; Recreation">
+      <itunes:category text="Outdoor"/>
+    </itunes:category>
+    <itunes:explicit>
+    {% if site.metafields.rss_settings.explicit %}yes{% else %}no{% endif %}
+    </itunes:explicit>
+  </channel>
+</rss>

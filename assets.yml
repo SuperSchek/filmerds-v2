@@ -1,0 +1,11 @@
+gzip_assets: off
+javascript_compressor: uglifier
+
+stylesheets:
+  public/stylesheets/style.min:
+    - stylesheets/main.scss
+
+# javascripts:
+#   public/javascripts/script.min:
+#     - public/js/some-library.js
+#     - javascript/script.js
