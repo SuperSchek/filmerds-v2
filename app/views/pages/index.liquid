@@ -1,40 +1,35 @@
 ---
-title: Home page
+title: Home
 published: true
 ---
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"> <!-- Set character encoding for the document -->
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ site.name }}</title>
-    <meta name="keywords" value="{{ site.meta_keywords }}" />
-    <meta name="description" value="{{ site.meta_description }}" />
+{% extends 'layouts/default' %}
 
-    {{ 'style.min.css' | stylesheet_tag }}
-  </head>
-  <body>
-    {% block 'main' %}
+{% block 'main' %}
 
-      {% include jumbo_styles %}
+  {% include jumbo_styles %}
 
-      <img src="{{ 'filmerds_pixel.jpg' | theme_image_url }}" />
+  <section class="jumbotron">
+    <div>
+      {% assign yt_link = "https://www.youtube.com/watch?v=gEeRhlnhxNQ" %}
 
-      <div class="jumbotron">
-        <div>
-        </div>
+      <div class="yt-container">
+        <iframe class="yt-video" src="https://www.youtube.com/embed/{{ yt_link | split: 'https://www.youtube.com/watch?v=' }}" frameborder="0" allowfullscreen></iframe>
       </div>
 
-      <div class="grid">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-      </div>
+      <img style="margin:auto; width: 50vw;" src="{{ 'filmerds_pixel.jpg' | theme_image_url }}" />
 
-    {% endblock %}
-  </body>
-</html>
+    </div>
+  </section>
+
+  <section class="navigation">
+    <nav>
+      <a class="btn-nav" href="/archief">Archief</a>
+      <a class="btn-nav" href="/">Wat?</a>
+      <a class="btn-nav" href="/">Waar?</a>
+      <a class="btn-nav" href="/">Waarom?</a>
+      <a class="btn-nav" href="/">Wanneer?</a>
+    </nav>
+  </section>
+
+{% endblock %}

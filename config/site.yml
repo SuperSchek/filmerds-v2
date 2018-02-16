@@ -11,7 +11,7 @@ name: "filmerds"
 # The locale listed first is the site's default locale
 # Locales are specified using ISO language codes
 # Possible locales include: en, de, fr, pl, pt-BR, it, nl, nb, es, ru, et, ja, zh-CN
-locales: [en]
+locales: [nl]
 
 # The site's timezone
 # This converts the server's time to the site's time zone in templates
@@ -23,9 +23,9 @@ locales: [en]
 # And include <meta type="keywords"> and <meta type="description">
 # For this purpose you can set values for these variables here
 # They can be accessed in templates through the site.seo_title, site.meta_keywords, and site.meta_description variables
-seo_title: filmerds
+seo_title: Filmerds
 meta_keywords: "some meta keywords"
-meta_description: "some meta description"
+meta_description: "Een podcast voor en door liefhebbers van film!"
 
 # You can control the display of the "Properties" section in the back-office
 # metafields_ui:
@@ -51,10 +51,8 @@ metafields:
     title: Filmerds
     language: nl
     link: https://www.apple.com/itunes/podcasts/
-    copyright: "2018 &#xA9; Filmerds"
+    copyright: "&#8471; &amp; &#xA9; 2018 Filmerds"
     owner_name: Sander Schekman
     owner_email: info@filmerds.com
     explicit: '0'
     type: episodic
-    subtitle: Een podcast voor en door liefhebbers van film!
-    author: Filmerds
