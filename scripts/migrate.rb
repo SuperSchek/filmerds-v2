@@ -33,7 +33,7 @@ def extract_name(title)
   new_title = title.partition('| ').last
   if (new_title == "")
     new_title = title.partition(': ').last
-  else
+  elsif (!new_title)
     new_title = title
   end
   return new_title
@@ -134,8 +134,7 @@ end
 # })
 
 # Iterate over all entries in CSV file.
-CSV.foreach("./sample_data.csv", :headers => true) do |podcast|
-  puts podcast[3]
+CSV.foreach("./data.csv", :headers => true) do |podcast|
   puts 'processing ' + podcast[1]
   puts "-------------------------------------------------------------"
 
@@ -200,14 +199,13 @@ CSV.foreach("./sample_data.csv", :headers => true) do |podcast|
 
   thumb = open(filename + ".jpg")
 
-  puts thumb
-
   req.body = {"content_entry": {
     "naam": extract_name(podcast[1]),
     "categorie": get_category(podcast[4]),
     "s3_url": extract_url(podcast[2]),
     "youtube_url": youtube_url,
-    "omschrijving": remove_attributes(podcast[2])
+    "omschrijving": remove_attributes(podcast[2]),
+    "publication_date": podcast[3][0] + podcast[3][1] + podcast[3][2] + podcast[3][3] + "-" + podcast[3][4] + podcast[3][5] + "-" + podcast[3][6] + podcast[3][7] + "T09:00:00+00:00"
   }}.to_json
 
   resp = http.start{|http| http.request(req)}

@@ -82,6 +82,10 @@ fields:
     localized: false
     # text_formatting: html # html (uses rich text editor), markdown or text (uses plain text editor)
 
+- publication_date:
+    label: Publicatie datum
+    type: date_time
+
 # - shownotes: # The lowercase, underscored name of the field
 #     label: Shownotes # Human readable name of the field
 #     type: text
