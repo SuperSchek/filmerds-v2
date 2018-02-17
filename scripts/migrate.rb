@@ -19,6 +19,9 @@ require 'fileutils'
 require 'json'
 require 'csv'
 
+require 'open-uri'
+require 'net/http'
+
 class String
   def string_between_markers marker1, marker2
     self[/#{Regexp.escape(marker1)}(.*?)#{Regexp.escape(marker2)}/m, 1]
@@ -28,18 +31,19 @@ end
 def extract_name(title)
   # return content.string_between_markers('href="', '"')
   new_title = title.partition('| ').last
-  if (new_title == '')
+  if (new_title == "")
     new_title = title.partition(': ').last
+  else
+    new_title = title
   end
   return new_title
 end
 
 def extract_url(content)
   url = content.string_between_markers('href="', '"')
-  if (url == "")
+  if (!url)
     url = content.string_between_markers("href='", "'")
   end
-  puts content
   return url
 end
 
@@ -123,8 +127,15 @@ def search_list_by_keyword(service, part, found_vids, **params)
 end
 
 
+# site_client.contents.podcasts.create({
+#   naam: 'Black Panther',
+#   categorie: 'Review',
+#   youtube_url: 'https://dikkeurlhier/vetniceidtje'
+# })
+
 # Iterate over all entries in CSV file.
 CSV.foreach("./sample_data.csv", :headers => true) do |podcast|
+  puts podcast[3]
   puts 'processing ' + podcast[1]
   puts "-------------------------------------------------------------"
 
@@ -160,8 +171,7 @@ CSV.foreach("./sample_data.csv", :headers => true) do |podcast|
   puts "Categorie: " + get_category(podcast[4])
   puts "Naam: " + extract_name(podcast[1])
   puts "Omschrijving: " + remove_attributes(podcast[2])
-  # puts "AWS S3 URL: " + extract_url(podcast[2])
-  extract_url(podcast[2])
+  puts "AWS S3 URL: " + extract_url(podcast[2])
   puts "YouTube URL: " + youtube_url
   puts "Thumbnail URL: " + thumbnail_url
 
@@ -169,6 +179,42 @@ CSV.foreach("./sample_data.csv", :headers => true) do |podcast|
   puts "Ziet dit er goed uit?"
 
   continue = gets.chomp
+
+  filename = get_category(podcast[4]) + "_" + extract_name(podcast[1])
+  filename = filename.gsub!(/[^0-9A-Za-z]/, '')
+
+  File.open(filename + '.jpg', 'wb') do |img|
+    img.write open(thumbnail_url).read
+  end
+
+  uri = URI.parse("https://engine.sanderschekman.com/locomotive/api/v3/content_types/podcasts/entries.json")
+  http =  Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+  req = Net::HTTP::Post.new("https://engine.sanderschekman.com/locomotive/api/v3/content_types/podcasts/entries.json")
+  req['Content-Type'] = "application/json"
+  req['X-Locomotive-Account-Token'] = "_kgPwMyd4sLXzrP6aZ8R"
+  req['X-Locomotive-Account-Email'] = "aaschekman@icloud.com"
+  req['X-Locomotive-Site-Handle'] = "filmerds-staging"
+
+  thumb = open(filename + ".jpg")
+
+  puts thumb
+
+  req.body = {"content_entry": {
+    "naam": extract_name(podcast[1]),
+    "categorie": get_category(podcast[4]),
+    "s3_url": extract_url(podcast[2]),
+    "youtube_url": youtube_url,
+    "omschrijving": remove_attributes(podcast[2])
+  }}.to_json
+
+  resp = http.start{|http| http.request(req)}
+
+  puts resp.inspect
+
+  File.delete filename + '.jpg'
 
   puts "\n"
   puts "\n"

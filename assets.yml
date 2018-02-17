@@ -1,5 +1,6 @@
 gzip_assets: off
 javascript_compressor: uglifier
+comments: off
 
 stylesheets:
   public/stylesheets/style.min:

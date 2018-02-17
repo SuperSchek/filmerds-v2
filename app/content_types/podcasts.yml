@@ -33,7 +33,7 @@ public_submission_enabled: true
 #   hidden: false           # hidden for authors?
 
 # By default, the back-office displays the _label property (see label_field_name) of the content entry. This can be modified by writing your own Liquid template below:
-# entry_template: '<a href="{{ link }}">{{ entry.categorie }} | {{ entry._label }}</a>' # The default template
+entry_template: '<a href="{{ link }}">{{ entry.categorie }} | {{ entry._label }}</a>' # The default template
 
 # A list describing each field
 fields:
@@ -68,15 +68,20 @@ fields:
 - audio_file:
     label: Audio File
     type: file
-#
-# - omschrijving: # The lowercase, underscored name of the field
-#     label: Omschrijving # Human readable name of the field
-#     type: text
-#     required: false
-#     hint: Explanatory text displayed in the back office
-#     localized: false
-#     # text_formatting: html # html (uses rich text editor), markdown or text (uses plain text editor)
-#
+
+- thumbnail:
+    label: Thumbnail
+    type: file
+    # required: true
+
+- omschrijving: # The lowercase, underscored name of the field
+    label: Omschrijving # Human readable name of the field
+    type: text
+    required: false
+    hint: Explanatory text displayed in the back office
+    localized: false
+    # text_formatting: html # html (uses rich text editor), markdown or text (uses plain text editor)
+
 # - shownotes: # The lowercase, underscored name of the field
 #     label: Shownotes # Human readable name of the field
 #     type: text
@@ -87,6 +92,12 @@ fields:
 #
 - youtube_url: # The lowercase, underscored name of the field
     label: YouTube Url # Human readable name of the field
+    type: string
+    required: false
+    localized: false
+
+- s3_url: # The lowercase, underscored name of the field
+    label: S3 Audio File Url # Human readable name of the field
     type: string
     required: false
     localized: false
