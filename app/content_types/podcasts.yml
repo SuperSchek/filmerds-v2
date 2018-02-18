@@ -11,13 +11,13 @@ description: A description of the content type for the editors
 label_field_name: naam
 
 # Valid values: manually, created_at, updated_at, or the slug of any field
-order_by: created_at
+order_by: publication_date
 
 # Valid values: asc (ascending) and desc (descending). Set to asc by default.
 order_direction: desc
 
 # Specify a field slug to group entries by that field in the back-office.
-# group_by: <your field>
+group_by: categorie
 
 # Activate public 'create' API (e.g for a contact form)
 public_submission_enabled: true
@@ -61,7 +61,8 @@ fields:
       "Stelling",
       "Terugblik",
       "Voorbeschouwing",
-      "Vooruitblik"
+      "Vooruitblik",
+      "Filmerds in het kort"
       ]
     required: false
 

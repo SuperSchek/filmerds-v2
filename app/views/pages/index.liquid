@@ -11,7 +11,7 @@ published: true
 
   <section class="jumbotron">
     <div>
-      {% assign yt_link = "https://www.youtube.com/watch?v=gEeRhlnhxNQ" %}
+      {% assign yt_link = contents.podcasts.first.youtube_url %}
 
       <div class="yt-container">
         <iframe class="yt-video" src="https://www.youtube.com/embed/{{ yt_link | split: 'https://www.youtube.com/watch?v=' }}" frameborder="0" allowfullscreen></iframe>
@@ -19,8 +19,29 @@ published: true
 
       <img style="margin:auto; width: 50vw;" src="{{ 'filmerds_pixel.jpg' | theme_image_url }}" />
 
+      {{ contents.podcasts.count }}
+      {{ contents.podcasts.first.categorie }} | {{ contents.podcasts.first.naam }}
+
+
     </div>
   </section>
+
+  {% paginate contents.podcasts by 5 %}
+    <ul>
+    {% for podcast in paginate.collection %}
+      <li>{{ podcast.categorie }} | {{ podcast.naam }}</li>
+
+      <audio controls>
+        <source src="{{ podcast.s3_url }}" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+    {% endfor %}
+    </ul>
+    <div class="pagination">
+      {% if paginate.previous_page %}<a href="?page={{paginate.previous_page}}">Previous</a>{% endif %}
+      {% if paginate.next %}<a href="?page={{ paginate.next_page }}">Next</a>{% endif %}
+    </div>
+  {% endpaginate %}
 
   <section class="navigation">
     <nav>
@@ -31,5 +52,6 @@ published: true
       <a class="btn-nav" href="/">Wanneer?</a>
     </nav>
   </section>
+
 
 {% endblock %}

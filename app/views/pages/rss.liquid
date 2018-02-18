@@ -34,4 +34,6 @@ response_type: application/xml
     {% if site.metafields.rss_settings.explicit %}yes{% else %}no{% endif %}
     </itunes:explicit>
   </channel>
+  {% for episode in contents.podcasts %}
+    {{ episode.categorie }} | {{ episode.naam }}
 </rss>

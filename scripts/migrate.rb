@@ -126,6 +126,13 @@ def search_list_by_keyword(service, part, found_vids, **params)
   end
 end
 
+def set_pub_date(category, podcast)
+  if (category == "Discussie")
+    return podcast[3][0] + podcast[3][1] + podcast[3][2] + podcast[3][3] + "-" + podcast[3][4] + podcast[3][5] + "-" + podcast[3][6] + podcast[3][7] + "T09:00:00+00:00"
+  else
+    return podcast[3][0] + podcast[3][1] + podcast[3][2] + podcast[3][3] + "-" + podcast[3][4] + podcast[3][5] + "-" + podcast[3][6] + podcast[3][7] + "T08:00:00+00:00"
+  end
+end
 
 # site_client.contents.podcasts.create({
 #   naam: 'Black Panther',
@@ -198,14 +205,15 @@ CSV.foreach("./data.csv", :headers => true) do |podcast|
   req['X-Locomotive-Site-Handle'] = "filmerds-staging"
 
   thumb = open(filename + ".jpg")
+  cat = get_category(podcast[4])
 
   req.body = {"content_entry": {
     "naam": extract_name(podcast[1]),
-    "categorie": get_category(podcast[4]),
+    "categorie": cat,
     "s3_url": extract_url(podcast[2]),
     "youtube_url": youtube_url,
     "omschrijving": remove_attributes(podcast[2]),
-    "publication_date": podcast[3][0] + podcast[3][1] + podcast[3][2] + podcast[3][3] + "-" + podcast[3][4] + podcast[3][5] + "-" + podcast[3][6] + podcast[3][7] + "T09:00:00+00:00"
+    "publication_date": set_pub_date(cat, podcast)
   }}.to_json
 
   resp = http.start{|http| http.request(req)}
