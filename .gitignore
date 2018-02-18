@@ -3,3 +3,4 @@ config/deploy.yml
 data/
 scripts/client_secret.json
 scripts/*.jpg
+public/samples
