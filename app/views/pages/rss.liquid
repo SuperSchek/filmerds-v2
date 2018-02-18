@@ -33,7 +33,26 @@ response_type: application/xml
     <itunes:explicit>
     {% if site.metafields.rss_settings.explicit %}yes{% else %}no{% endif %}
     </itunes:explicit>
+
+    {% with_scope publication_date.lte: today %}
+      {% for episode in contents.podcasts %}
+        <item>
+          <itunes:episodeType>full</itunes:episodeType>
+          <itunes:title>{{ episode.categorie }} | {{ episode.naam | escape }}</itunes:title>
+          <title>{{ episode.categorie }} | {{ episode.naam | escape }}</title>
+          <itunes:author>{{ site.metafields.rss_settings.author }}</itunes:author>
+          <itunes:subtitle>The Sunset Explorers share tips, techniques and recommendations for great hikes and adventures around the United States.</itunes:subtitle>
+          <itunes:summary>The Sunset Explorers share tips, techniques and recommendations for great hikes and adventures around the United States.</itunes:summary>
+          <description>The Sunset Explorers share tips, techniques and recommendations for great hikes and adventures around the United States.</description>
+          <!-- <content:encoded><![CDATA[The Sunset Explorers share tips, techniques and recommendations for great hikes and adventures around the United States. Listen on <a href="https://www.apple.com/itunes/podcasts/">Apple Podcasts</a>]]>.</content:encoded> -->
+          <enclosure length="498537" type="audio/mpeg" url="{{ episode.s3_url | escape }}"/>
+          <guid>http://example.com/podcasts/archive/aae20160418.mp3</guid>
+          <pubDate>{{ episode.publication_date | date: '%a, %d %b %Y %H:%M:%S' }} +1000</pubDate>
+          <itunes:duration>17:59</itunes:duration>
+          <itunes:explicit>no</itunes:explicit>
+        </item>
+      {% endfor %}
+    {% endwith_scope %}
+
   </channel>
-  {% for episode in contents.podcasts %}
-    {{ episode.categorie }} | {{ episode.naam }}
 </rss>

@@ -41,7 +41,7 @@ fields:
     label: Naam # Human readable name of the field
     type: string
     required: false
-    hint: Explanatory text displayed in the back office
+    hint: Naam van de aflevering
     localized: false
 
 - categorie:

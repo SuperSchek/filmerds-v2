@@ -26,22 +26,26 @@ published: true
     </div>
   </section>
 
-  {% paginate contents.podcasts by 5 %}
-    <ul>
-    {% for podcast in paginate.collection %}
-      <li>{{ podcast.categorie }} | {{ podcast.naam }}</li>
+  {% with_scope publication_date.lte: today %}
+    {% paginate contents.podcasts by 5 %}
 
-      <audio controls>
-        <source src="{{ podcast.s3_url }}" type="audio/mpeg">
-      Your browser does not support the audio element.
-      </audio>
-    {% endfor %}
-    </ul>
-    <div class="pagination">
-      {% if paginate.previous_page %}<a href="?page={{paginate.previous_page}}">Previous</a>{% endif %}
-      {% if paginate.next %}<a href="?page={{ paginate.next_page }}">Next</a>{% endif %}
-    </div>
-  {% endpaginate %}
+      <ul>
+      {% for podcast in paginate.collection %}
+        <li>{{ podcast.categorie }} | {{ podcast.naam }}</li>
+
+        <audio controls>
+          <source src="{{ podcast.s3_url }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+      {% endfor %}
+      </ul>
+      <div class="pagination">
+        {% if paginate.previous_page %}<a href="?page={{ paginate.previous_page }}">Previous</a>{% endif %}
+        {% if paginate.next %}<a href="?page={{ paginate.next_page }}">Next</a>{% endif %}
+      </div>
+
+    {% endpaginate %}
+  {% endwith_scope %}
 
   <section class="navigation">
     <nav>

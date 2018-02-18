@@ -62,6 +62,11 @@ rss_settings:
       hint: "Titel van de podcast"
       label: "Titel"
       required: true
+    cover_art:
+      type: image
+      required: true
+      label: "Cover art"
+      hint: "Cover art voor pdcast feed"
     language:
       type: select
       select_options: ["nl", "en-us"]
