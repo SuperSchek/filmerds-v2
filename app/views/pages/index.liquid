@@ -7,47 +7,42 @@ published: true
 
 {% block 'main' %}
 
-  {% include jumbo_styles %}
+  {% include styles_default %}
 
   <section class="jumbotron">
     <div>
-      {% assign yt_link = contents.podcasts.first.youtube_url %}
 
-      <div class="yt-container">
-        <iframe class="yt-video" src="https://www.youtube.com/embed/{{ yt_link | split: 'https://www.youtube.com/watch?v=' }}" frameborder="0" allowfullscreen></iframe>
-      </div>
+      {% with_scope publication_date.lte: today %}
 
-      <img style="margin:auto; width: 50vw;" src="{{ 'filmerds_pixel.jpg' | theme_image_url }}" />
+        {% assign latest = contents.podcasts.first %}
 
-      {{ contents.podcasts.count }}
-      {{ contents.podcasts.first.categorie }} | {{ contents.podcasts.first.naam }}
+        <!-- <div class="yt-container">
+          <iframe class="yt-video" src="https://www.youtube.com/embed/{{ latest.youtube_url | split: 'https://www.youtube.com/watch?v=' }}" frameborder="0" allowfullscreen></iframe>
+        </div> -->
 
-
+        <h1 class="white">{{ latest.categorie }} | {{ latest.naam }}</h1>
+      {% endwith_scope %}
     </div>
   </section>
 
-  {% with_scope publication_date.lte: today %}
-    {% paginate contents.podcasts by 5 %}
+  <div class="container">
 
-      <ul>
-      {% for podcast in paginate.collection %}
-        <li>{{ podcast.categorie }} | {{ podcast.naam }}</li>
+    {% with_scope publication_date.lte: today %}
+      {% paginate contents.podcasts by 5 %}
 
-        <audio controls>
-          <source src="{{ podcast.s3_url }}" type="audio/mpeg">
-        Your browser does not support the audio element.
-        </audio>
-      {% endfor %}
-      </ul>
-      <div class="pagination">
-        {% if paginate.previous_page %}<a href="?page={{ paginate.previous_page }}">Previous</a>{% endif %}
-        {% if paginate.next %}<a href="?page={{ paginate.next_page }}">Next</a>{% endif %}
-      </div>
+        <ul>
+        {% for podcast in paginate.collection %}
+          <li><a href="{% path_to podcast %}">{{ podcast.categorie }} | {{ podcast.naam }}</a></li>
+        {% endfor %}
+        </ul>
+        <div class="pagination">
+          {% if paginate.previous_page %}<a href="?page={{ paginate.previous_page }}">Previous</a>{% endif %}
+          {% if paginate.next %}<a href="?page={{ paginate.next_page }}">Next</a>{% endif %}
+        </div>
 
-    {% endpaginate %}
-  {% endwith_scope %}
+      {% endpaginate %}
+    {% endwith_scope %}
 
-  <section class="navigation">
     <nav>
       <a class="btn-nav" href="/archief">Archief</a>
       <a class="btn-nav" href="/">Wat?</a>
@@ -55,7 +50,18 @@ published: true
       <a class="btn-nav" href="/">Waarom?</a>
       <a class="btn-nav" href="/">Wanneer?</a>
     </nav>
-  </section>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+
+        {% include 'footer' %}
+
+      </div>
+    </div>
+  </footer>
 
 
 {% endblock %}

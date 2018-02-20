@@ -1,0 +1,42 @@
+<div class="col-6">
+  <h2 class="white">Contact</h2>
+
+  {% model_form 'berichten', success: '/', error: '/' %}
+
+      {% if bericht.errors %}
+        <p class="white">Daar ging iets fout:</p>
+        <ul>
+        {% for error in bericht.errors %}
+          <li class="white">{{error[0] | capitalize}} -  {{error[1]}}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      <div class="form-input">
+        <span class="white">Naam</span>
+        <input type="text" name="content[naam]" value="{{bericht.naam}}" placeholder="Wat is je naam?" required>
+      </div>
+      <div class="form-input">
+        <span class="white">Email</span>
+        <input type="email" name="content[email]" value="{{bericht.email}}" placeholder="Waar kunnen we je bereiken?" required>
+      </div>
+      <div class="form-input">
+        <span class="white">Onderwerp</span>
+        <input type="text" name="content[subject]" value="{{bericht.subject}}" placeholder="Waar wil je ons over spreken?" required>
+      </div>
+      <div class="form-input">
+        <span class="white">Bericht</span>
+        <textarea name="content[bericht]" placeholder="Wat wil je kwijt?" required>{{bericht.bericht}}</textarea>
+      </div>
+
+      <input class="btn white" type="submit" value="Verzenden">
+    {% endmodel_form %}
+
+</div>
+
+<div class="col-6">
+  <amp-img alt="Filmerds Pixelated"
+           src="{{ 'filmerds_pixel.jpg' | theme_image_url }}"
+           width="1404" height="702"
+           ></amp-img>
+</div>

@@ -1,10 +1,12 @@
 gzip_assets: off
 javascript_compressor: uglifier
-comments: off
+comments: on
 
 stylesheets:
   public/stylesheets/style.min:
     - stylesheets/main.scss
+  public/stylesheets/lib/simplegrid/simplegrid.min:
+    - stylesheets/lib/simplegrid/simple-grid.css
 
 # javascripts:
 #   public/javascripts/script.min:
