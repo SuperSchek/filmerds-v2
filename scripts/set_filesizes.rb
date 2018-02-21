@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
-# require 'net/http'
-#
+##### NOTES #####
+# This script needs a .env file with ENGINE_EMAIL and ENGINE_API_KEY to work
+
 # require 'uri'
 # file_url = MyObject.first.file.url
 #
@@ -13,21 +14,10 @@
 #
 # file_length = res["content-length"]
 
-# require 'yaml'
-# require 'json'
-#
-# config_options = YAML.load_file('../data/podcasts.yml')
-# config_options[0].each do |key, value|
-#     # do whatever you want with key and value here
-#     podcast = value.to_json
-#     puts podcast
-# end
-
-
 require 'yaml'
-require 'json'
 require 'locomotive/coal'
 require 'dotenv/load'
+require 'net/http'
 
 # Load data file (should be synced with bundle exec wagon sync)
 podcasts = YAML.load_file('../data/podcasts.yml')
@@ -40,9 +30,13 @@ def get_filesize_s3(url)
   return "Get dat size yo"
 end
 
+# Adds filesize in bytes to s3_filesize property of entry on LocomotiveCMS using Coal
+def set_filesize_engine(url)
+  return "Set dat size yo"
+end
 
 # Loop over all entries
-podcasts.each_with_index do |podcast, index|
+podcasts.each do |podcast|
   # Convert podcast Hash to array for easier handling
   podcast = podcast.to_a
 
