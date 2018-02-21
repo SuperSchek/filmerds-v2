@@ -84,7 +84,7 @@ fields:
     # text_formatting: html # html (uses rich text editor), markdown or text (uses plain text editor)
 
 - publication_date:
-    label: Publicatie datum
+    label: Datum en tijdstip van publicatie
     type: date_time
 
 # - shownotes: # The lowercase, underscored name of the field
@@ -104,5 +104,11 @@ fields:
 - s3_url: # The lowercase, underscored name of the field
     label: S3 Audio File Url # Human readable name of the field
     type: string
+    required: false
+    localized: false
+
+- s3_filesize:
+    label: Audio filesize in bytes volgens AWS S3
+    hint: De API berekend deze waarde, NIET AANPASSEN!
     required: false
     localized: false

@@ -109,3 +109,11 @@ rss_settings:
       label: Auteur
       hint: Auteur van podcast
       required: true
+
+misc_settings:
+  label: Overig
+  fields:
+    autoplay:
+      type: boolean
+      label: YouTube Autoplay
+      hint: Autoplay YouTube video op de podcast pagina

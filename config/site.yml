@@ -59,3 +59,5 @@ metafields:
     explicit: '1'
     type: episodic
     author: Sander Schekman, Henk van den Velden &amp; Pim Meijerman
+  misc_settings:
+    autoplay: '0'
