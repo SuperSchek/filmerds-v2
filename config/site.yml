@@ -51,13 +51,13 @@ metafields:
     title: Filmerds Podcast
     cover_art: "/samples/assets/eGXkvrh.png"
     language: nl
-    link: ''
+    link: https://www.filmerds.com/podcasts
     subtitle: Een podcast voor en door liefhebbers van film!
     copyright: "&#xA9; 2016 - 2018 Filmerds"
     owner_name: Sander Schekman
     owner_email: aaschekman@icloud.com
     explicit: '1'
     type: episodic
-    author: Sander Schekman, Henk van den Velden &amp; Pim Meijerman
+    author: Sander Schekman, Henk van den Velden en Pim Meijerman
   misc_settings:
     autoplay: '0'

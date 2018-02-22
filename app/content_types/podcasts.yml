@@ -112,3 +112,4 @@ fields:
     hint: De API berekend deze waarde, NIET AANPASSEN!
     required: false
     localized: false
+    type: integer
