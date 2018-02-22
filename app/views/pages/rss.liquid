@@ -19,14 +19,14 @@ response_type: application/xml
     </itunes:subtitle>
 
     <itunes:author>{{ site.metafields.rss_settings.author }}</itunes:author>
-    <itunes:summary>Love to get outdoors and discover nature&apos;s treasures? Hiking Treks is the show for you. We review hikes and excursions, review outdoor gear and interview a variety of naturalists and adventurers. Look for new episodes each week.</itunes:summary>
-    <description>Love to get outdoors and discover nature&apos;s treasures? Hiking Treks is the show for you. We review hikes and excursions, review outdoor gear and interview a variety of naturalists and adventurers. Look for new episodes each week.</description>
+    <itunes:summary>{{ site.metafields.rss_settings.description }}</itunes:summary>
+    <description>{{ site.metafields.rss_settings.description }}</description>
     <itunes:type>{{ site.metafields.rss_settings.type }}</itunes:type>
     <itunes:owner>
       <itunes:name>{{ site.metafields.rss_settings.owner_name }}</itunes:name>
       <itunes:email>{{ site.metafields.rss_settings.owner_email }}</itunes:email>
     </itunes:owner>
-    <itunes:image href="http://podcasts.apple.com/resources/example/hiking_treks/images/cover_art.jpg"/>
+    <itunes:image href="{{ site.metafields.rss_settings.cover_art }}"/>
     <itunes:category text="TV &amp; Film"></itunes:category>
     <itunes:explicit>
     {% if site.metafields.rss_settings.explicit %}yes{% else %}no{% endif %}
@@ -45,9 +45,8 @@ response_type: application/xml
           <enclosure length="{{ episode.s3_filesize }}" type="audio/mpeg" url="{{ episode.s3_url | escape }}"/>
           <guid>https://www.filmerds.com{% path_to episode %}</guid>
           <link>https://www.filmerds.com{% path_to episode %}</link>
-          <pubDate>{{ episode.publication_date | date: '%a, %d %b %Y %H:%M:%S' }} +1000</pubDate>
-          <itunes:duration>17:59</itunes:duration>
-          <itunes:explicit>no</itunes:explicit>
+          <pubDate>{{ episode.publication_date | date: '%a, %d %b %Y %H:%M:%S' }}</pubDate>
+          <itunes:explicit>yes</itunes:explicit>
         </item>
       {% endfor %}
     {% endwith_scope %}

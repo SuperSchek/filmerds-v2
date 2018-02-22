@@ -5,7 +5,7 @@ name: Podcasts
 slug: podcasts
 
 # Explanatory text displayed in the back-office
-description: A description of the content type for the editors
+description: Afleveringen van de Filmerds Podcast
 
 # Slug of field used to identify entries by default, such as the title
 label_field_name: naam
@@ -26,19 +26,18 @@ public_submission_enabled: true
 # public_submission_accounts: ['john@example.com']
 
 # Control the display of the content type in the back-office.
-# display_settings:
-#   seo: false              # display the SEO tab for the content entries
-#   advanced: false         # display the Advanced tab for the content entries
-#   position: 1             # position in the sidebar menu
-#   hidden: false           # hidden for authors?
+display_settings:
+  seo: true              # display the SEO tab for the content entries
+  advanced: false         # display the Advanced tab for the content entries
+  position: 1             # position in the sidebar menu
+  hidden: false           # hidden for authors?
 
 # By default, the back-office displays the _label property (see label_field_name) of the content entry. This can be modified by writing your own Liquid template below:
 entry_template: '<a href="{{ link }}">{{ entry.categorie }} | {{ entry._label }}</a>' # The default template
 
-# A list describing each field
 fields:
-- naam: # The lowercase, underscored name of the field
-    label: Naam # Human readable name of the field
+- naam:
+    label: Naam
     type: string
     required: false
     hint: Naam van de aflevering
@@ -73,36 +72,26 @@ fields:
 - thumbnail:
     label: Thumbnail
     type: file
-    # required: true
 
-- omschrijving: # The lowercase, underscored name of the field
-    label: Omschrijving # Human readable name of the field
+- omschrijving:
+    label: Omschrijving
     type: text
     required: false
     hint: Explanatory text displayed in the back office
     localized: false
-    # text_formatting: html # html (uses rich text editor), markdown or text (uses plain text editor)
 
 - publication_date:
     label: Datum en tijdstip van publicatie
     type: date_time
 
-# - shownotes: # The lowercase, underscored name of the field
-#     label: Shownotes # Human readable name of the field
-#     type: text
-#     required: false
-#     hint: Explanatory text displayed in the back office
-#     localized: false
-#     # text_formatting: html # html (uses rich text editor), markdown or text (uses plain text editor)
-#
-- youtube_url: # The lowercase, underscored name of the field
-    label: YouTube Url # Human readable name of the field
+- youtube_url:
+    label: YouTube Url
     type: string
     required: false
     localized: false
 
-- s3_url: # The lowercase, underscored name of the field
-    label: S3 Audio File Url # Human readable name of the field
+- s3_url:
+    label: S3 Audio File Url
     type: string
     required: false
     localized: false

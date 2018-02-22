@@ -62,11 +62,21 @@ rss_settings:
       hint: "Titel van de podcast"
       label: "Titel"
       required: true
+    subtitle:
+      type: string
+      hint: "Subtitel voor iTunes feed"
+      label: "Subtitel"
+      required: true
+    description:
+      type: text
+      hint: "Omschrijving voor iTunes feed. Iets uitgebreider dan de subtitel"
+      label: "Omschrijving"
+      required: true
     cover_art:
       type: image
       required: true
       label: "Cover art"
-      hint: "Cover art voor pdcast feed"
+      hint: "Cover art voor podcast. Moet 3000x3000 en goed geoptimaliseerd zijn!"
     language:
       type: select
       select_options: ["nl", "en-us"]
@@ -76,11 +86,6 @@ rss_settings:
     link:
       type: string
       hint: "Link naar podcast pagina (bijv. https://www.apple.com/itunes/podcasts/)"
-      required: true
-    subtitle:
-      type: string
-      hint: "Subtitel voor iTunes feed"
-      label: "Subtitel"
       required: true
     copyright:
       type: string
