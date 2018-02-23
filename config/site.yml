@@ -48,8 +48,8 @@ meta_description: "Een podcast voor en door liefhebbers van film!"
 #     background_image: "/samples/background.png"
 metafields:
   rss_settings:
-    title: Filmerds Podcast
-    cover_art: "/samples/assets/eGXkvrh.png"
+    title: Filmerds (Staging)
+    cover_art: "/samples/assets/CoverArt_3000.png"
     language: nl
     link: https://www.filmerds.com/podcasts
     subtitle: Een podcast voor en door liefhebbers van film!
@@ -58,6 +58,10 @@ metafields:
     owner_email: aaschekman@icloud.com
     explicit: '1'
     type: episodic
-    author: Sander Schekman, Henk van den Velden en Pim Meijerman
+    author: Sander Schekman, Henk van der Velden en Pim Meijerman
+    description: Filmerds is een podcast voor en door liefhebbers van film. Je kan
+      elke woensdag en zaterdag nieuwe content van ons vinden op YouTube en iTunes!
+      Elke maand bespreken we in samenwerking met Filmdomein de grote releases van
+      die maand.
   misc_settings:
     autoplay: '0'

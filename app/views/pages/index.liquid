@@ -7,8 +7,6 @@ published: true
 
 {% block 'main' %}
 
-  {% include styles_default %}
-
   <section class="jumbotron">
     <div>
 
@@ -16,11 +14,15 @@ published: true
 
         {% assign latest = contents.podcasts.first %}
 
-        <!-- <div class="yt-container">
-          <iframe class="yt-video" src="https://www.youtube.com/embed/{{ latest.youtube_url | split: 'https://www.youtube.com/watch?v=' }}" frameborder="0" allowfullscreen></iframe>
-        </div> -->
+        <amp-youtube class="youtube-player"
+          width="1920"
+          height="1080"
+          class="youtube-player"
+          layout="responsive"
+          data-videoid="g6U20NFRd8w"
+          autoplay>
+        </amp-youtube>
 
-        <h1 class="white">{{ latest.categorie }} | {{ latest.naam }}</h1>
       {% endwith_scope %}
     </div>
   </section>
@@ -28,7 +30,7 @@ published: true
   <div class="container">
 
     {% with_scope publication_date.lte: today %}
-      {% paginate contents.podcasts by 5 %}
+      {% paginate contents.podcasts by 25 %}
 
         <ul>
         {% for podcast in paginate.collection %}
@@ -53,15 +55,7 @@ published: true
 
   </div>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-
-        {% include 'footer' %}
-
-      </div>
-    </div>
-  </footer>
+  {% include 'footer' %}
 
 
 {% endblock %}

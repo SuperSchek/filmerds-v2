@@ -41,7 +41,6 @@ response_type: application/xml
           <itunes:author>{{ site.metafields.rss_settings.author | escape }}</itunes:author>
           <itunes:summary>{{ episode.omschrijving | escape }}</itunes:summary>
           <description>{{ episode.omschrijving | escape }}</description>
-          <!-- <content:encoded><![CDATA[The Sunset Explorers share tips, techniques and recommendations for great hikes and adventures around the United States. Listen on <a href="https://www.apple.com/itunes/podcasts/">Apple Podcasts</a>]]>.</content:encoded> -->
           <enclosure length="{{ episode.s3_filesize }}" type="audio/mpeg" url="{{ episode.s3_url | escape }}"/>
           <guid>https://www.filmerds.com{% path_to episode %}</guid>
           <link>https://www.filmerds.com{% path_to episode %}</link>

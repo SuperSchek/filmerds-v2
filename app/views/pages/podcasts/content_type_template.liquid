@@ -8,8 +8,8 @@ content_type: podcasts
   <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-audio" src="https://cdn.ampproject.org/v0/amp-audio-0.1.js"></script>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async custom-element="amp-audio" src="https://cdn.ampproject.org/v0/amp-audio-0.1.js"></script>
 
     <title>{{ podcast.categorie }} | {{ podcast.naam }} - Filmerds</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -27,6 +27,7 @@ content_type: podcasts
     <meta property="article:publisher" content="https://www.facebook.com/Filmerds" />
     <meta property="article:section" content="{{ podcast.categorie }}" />
 
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@filmerds">
     <meta name="twitter:title" content="{{ podcast.categorie }} | {{ podcast.naam }} - Filmerds">
@@ -39,13 +40,11 @@ content_type: podcasts
     <meta name="subject" content="Nederlandse podcast over films">
 
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+    {% include styles_default %}
   </head>
 
   <body>
-
-    {% include styles_default %}
-
-
     <amp-youtube class="youtube-player"
       width="1920"
       height="1080"
@@ -57,7 +56,7 @@ content_type: podcasts
 
     <div class="container">
       <div class="row">
-        <h3>{{ podcast.categorie }} | {{ podcast.naam }}</h3>
+        <h2>{{ podcast.categorie }} | {{ podcast.naam }}</h2>
 
         <span>{{ podcast.omschrijving }}<span>
 
@@ -72,6 +71,8 @@ content_type: podcasts
         </amp-audio>
       </div>
     </div>
+
+    {% include 'footer' %}
 
   </body>
 </html>
