@@ -14,14 +14,14 @@ published: true
 
         {% assign latest = contents.podcasts.first %}
 
-        <amp-youtube class="youtube-player"
+        <!-- <amp-youtube class="youtube-player"
           width="1920"
           height="1080"
           class="youtube-player"
           layout="responsive"
           data-videoid="g6U20NFRd8w"
           autoplay>
-        </amp-youtube>
+        </amp-youtube> -->
 
       {% endwith_scope %}
     </div>
@@ -29,7 +29,7 @@ published: true
 
   <div class="container">
 
-    {% with_scope publication_date.lte: today %}
+    <!-- {% with_scope publication_date.lte: today %}
       {% paginate contents.podcasts by 25 %}
 
         <ul>
@@ -43,7 +43,7 @@ published: true
         </div>
 
       {% endpaginate %}
-    {% endwith_scope %}
+    {% endwith_scope %} -->
 
     <nav>
       <a class="btn-nav" href="/archief">Archief</a>
