@@ -43,25 +43,30 @@ def set_filesize_engine(slug, filesize, site_client)
 end
 
 # Loop over all entries
-podcasts.each do |podcast|
-  # Convert podcast Hash to array for easier handling
-  podcast = podcast.to_a
-  
-  puts "----------------------------------------------"
-  puts podcast[0][1]["categorie"] + " | " + podcast[0][1]["naam"]
+page = 1
+while page do
+  podcasts = site_client.contents.podcasts.all({}, page: page)
+  podcasts.each do |podcast|
+    if (podcast.s3_filesize.nil?)
+      # We're gonna get to work
+      puts "----------------------------------------------"
+      puts "Setting filesize for " + podcast.categorie + " | " + podcast.naam
 
-  # Check if current entry already contains an s3_filesize value. If so, skip it
-  if (podcast[0][1]["s3_filesize"].nil?)
-    # Get filesize
-    filesize = get_filesize_s3(podcast[0][1]["s3_url"])
-    puts "S3 filesize is " + filesize + " bytes!"
+      # Get filesize
+      filesize = get_filesize_s3(podcast.s3_url)
+      puts "S3 filesize is " + filesize + " bytes!"
 
-    # Set filesize on Engine
-    set_filesize_engine(podcast[0][1]["_slug"], filesize, site_client)
-    puts "Updated filesize to " + filesize + " on the engine!"
-  else
-    puts "Filesize already set, skipping entry."
+      # Set filesize on Engine
+      set_filesize_engine(podcast._slug, filesize, site_client)
+      puts "Updated filesize to " + filesize + " on the engine!"
+    else
+      # This entry can be skipped
+      puts "----------------------------------------------"    
+      puts "Skipped " + podcast.categorie + " | " + podcast.naam
+    end
+    
   end
+  page = podcasts._next_page
 end
 
 # Nice message to show when work is done
