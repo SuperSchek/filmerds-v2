@@ -1,6 +1,10 @@
 ---
 title: Home
+slug: home
+position: 1
+listed: true
 published: true
+is_layout: false
 ---
 
 {% extends 'layouts/default' %}
@@ -45,13 +49,7 @@ published: true
       {% endpaginate %}
     {% endwith_scope %} -->
 
-    <nav>
-      <a class="btn-nav" href="/archief">Archief</a>
-      <a class="btn-nav" href="/">Wat?</a>
-      <a class="btn-nav" href="/">Waar?</a>
-      <a class="btn-nav" href="/">Waarom?</a>
-      <a class="btn-nav" href="/">Wanneer?</a>
-    </nav>
+    {% include navigation %}
 
   </div>
 

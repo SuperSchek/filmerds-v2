@@ -1,0 +1,34 @@
+<button on="tap:sidebar.toggle"
+  class="ampstart-btn caps m2">Toggle sidebar</button>
+
+<amp-sidebar id="sidebar"
+  layout="nodisplay"
+  side="right"
+  class="hidden-lg">
+  <ul>
+    <li>
+      <a href="/">Wat?</a>
+    </li>
+    <li>
+      <a href="/">Waar?</a>
+    </li>
+    <li>
+      <a href="/">Waarom?</a>
+    </li>
+    <li>
+      <a href="/">Wanneer?</a>
+    </li>
+    <li>
+      <a href="/">Archief </a>
+    </li>
+  </ul>
+  <span>&copy; {{ now | date: '%Y' }} Filmerds</span>
+</amp-sidebar>
+
+<nav class="hidden-sm">
+  <a class="btn-nav" href="/">Wat?</a>
+  <a class="btn-nav" href="/">Waar?</a>
+  <a class="btn-nav" href="/">Waarom?</a>
+  <a class="btn-nav" href="/">Wanneer?</a>
+  <a class="btn-nav" href="/archief">Archief</a>
+</nav>

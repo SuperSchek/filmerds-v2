@@ -182,6 +182,10 @@ p {
   display: none;
 }
 
+.hidden-lg {
+  display: block;
+}
+
 @media only screen and (min-width: 33.75em) {  /* 540px */
   .container {
     width: 80%;
@@ -239,6 +243,10 @@ p {
 
   .hidden-sm {
     display: block;
+  }
+
+  .hidden-lg {
+    display: none;
   }
 }
 
