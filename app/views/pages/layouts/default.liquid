@@ -8,25 +8,11 @@ title: Default
   {% include head_default %}
 
   <body>
-    <!-- <nav class="hidden-sm">
-      <div class="btn-nav">
-        <a href="/">Wat?</a>
-      </div>
-      <div class="btn-nav">
-        <a href="/">Waar?</a>
-      </div>
-      <div class="btn-nav">
-        <a href="/">Waarom?</a>
-      </div>
-      <div class="btn-nav">
-        <a href="/">Wanneer?</a>
-      </div>
-      <div class="btn-nav">
-        <a href="/archief">Archief</a>
-      </div>
-    </nav> -->
     {% block 'main' %}
     {% comment %} ***Content*** {% endcomment %}
     {% endblock %}
   </body>
+
+  {% include 'footer' %}
+
 </html>

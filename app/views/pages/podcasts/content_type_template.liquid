@@ -2,6 +2,7 @@
 title: Podcast template page
 content_type: podcasts
 ---
+
 <!doctype html>
 <html prefix="og: http://ogp.me/ns#" lang="nl" amp>
 
@@ -22,7 +23,7 @@ content_type: podcasts
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://www.filmerds.com{% path_to page %}" />
     <meta property="og:image" content="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %}" />
-    <meta property="og:description" content="{{ podcast.omschrijving }}" />
+    <meta property="og:description" content="{{ podcast.omschrijving | strip_html }}" />
     <meta property="article:published_time" content="{{ podcast.publication_date }}" />
     <meta property="article:publisher" content="https://www.facebook.com/Filmerds" />
     <meta property="article:section" content="{{ podcast.categorie }}" />
@@ -31,9 +32,9 @@ content_type: podcasts
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@filmerds">
     <meta name="twitter:title" content="{{ podcast.categorie }} | {{ podcast.naam }} - Filmerds">
-    <meta name="twitter:description" content="{{ podcast.omschrijving }}">
+    <meta name="twitter:description" content="{{ podcast.omschrijving | strip_html }}">
     <meta name="twitter:image" content="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %}">
-
+  
     <meta name="theme-color" content="#385c80">
     <meta name="keywords" content="{{ site.meta_keywords }}" />
     <meta name="description" content="{{ site.meta_description }}" />
@@ -61,7 +62,7 @@ content_type: podcasts
         <span>{{ podcast.omschrijving }}<span>
 
         <amp-audio src="{{ podcast.s3_url }}"
-                   artwork="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ podcast.youtube_url | split: 'https://www.youtube.com/watch?v=' }}/maxresdefault.jpg{% endunless %}"
+                   artwork="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %}"
                    title="{{ podcast.categorie }} | {{ podcast.naam }} - Filmerds"
                    height="50"
                    width="auto">
@@ -69,6 +70,10 @@ content_type: podcasts
             <p>Your browser doesn’t support HTML5 audio</p>
           </div>
         </amp-audio>
+      </div>
+
+      <div class="row">
+        {% include 'suggested_podcasts' with categorie: podcast.categorie %}
       </div>
     </div>
 

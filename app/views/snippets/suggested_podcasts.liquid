@@ -1,0 +1,12 @@
+{% with_scope publication_date.lte: today, categorie: categorie %}
+    {% paginate contents.podcasts by 3 %}
+        {% for podcast in paginate.collection %}
+
+        <div class="col-4 col-md-6 col-sm-12">
+            {% include 'card_podcast' with podcast: podcast %}
+        </div>
+
+        {% endfor %}
+
+    {% endpaginate %}
+{% endwith_scope %}

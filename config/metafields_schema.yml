@@ -60,6 +60,28 @@ rss_settings:
       hint: Auteur van podcast
       required: true
 
+social_media:
+  label: Social Media
+  fields:
+    youtube_url:
+      type: string
+      label: YouTube URL
+    facebook_url:
+      type: string
+      label: Facebook URL
+    twitter_url:
+      type: string
+      label: Twitter URL
+    instagram_url:
+      type: string
+      label: Instagram URL
+    itunes_url:
+      type: string
+      label: iTunes URL
+    rss_url:
+      type: string
+      label: RSS URL
+
 misc_settings:
   label: Overig
   fields:

@@ -1,0 +1,35 @@
+{% if site.metafields.social_media.youtube_url %}
+    {% include 'social_icon' with url: site.metafields.social_media.youtube_url,
+                                    icon: 'social_icons/YouTube.svg',
+                                    alt: 'YouTube'  %}
+{% endif %}
+
+{% if site.metafields.social_media.itunes_url %}
+    {% include 'social_icon' with url: site.metafields.social_media.itunes_url,
+                                    icon: 'social_icons/Podcast.svg',
+                                    alt: 'iTunes'  %}
+{% endif %}
+
+{% if site.metafields.social_media.rss_url %}
+    {% include 'social_icon' with url: site.metafields.social_media.rss_url,
+                                    icon: 'social_icons/RSS.svg',
+                                    alt: 'RSS'  %}
+{% endif %}
+
+{% if site.metafields.social_media.facebook_url %}
+    {% include 'social_icon' with url: site.metafields.social_media.facebook_url,
+                                    icon: 'social_icons/Facebook.svg',
+                                    alt: 'Facebook'  %}
+{% endif %}
+
+{% if site.metafields.social_media.instagram_url %}
+    {% include 'social_icon' with url: site.metafields.social_media.instagram_url,
+                                    icon: 'social_icons/Instagram.svg',
+                                    alt: 'Instagram'  %}
+{% endif %}
+
+{% if site.metafields.social_media.twitter_url %}
+    {% include 'social_icon' with url: site.metafields.social_media.twitter_url,
+                                    icon: 'social_icons/Twitter.svg',
+                                    alt: 'Twitter'  %}
+{% endif %}

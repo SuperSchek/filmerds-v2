@@ -18,14 +18,14 @@ is_layout: false
 
         {% assign latest = contents.podcasts.first %}
 
-        <!-- <amp-youtube class="youtube-player"
+        <amp-youtube class="youtube-player"
           width="1920"
           height="1080"
           class="youtube-player"
           layout="responsive"
           data-videoid="g6U20NFRd8w"
           autoplay>
-        </amp-youtube> -->
+        </amp-youtube>
 
       {% endwith_scope %}
     </div>
@@ -33,37 +33,42 @@ is_layout: false
 
   <div class="container">
 
-    <!-- {% with_scope publication_date.lte: today %}
-      {% paginate contents.podcasts by 25 %}
+    {% include navigation with page: 'home' %}  
 
-        <ul>
-        {% for podcast in paginate.collection %}
-          <li><a href="{% path_to podcast %}">{{ podcast.categorie }} | {{ podcast.naam }}</a></li>
-        {% endfor %}
-        </ul>
-        <div class="pagination">
-          {% if paginate.previous_page %}<a href="?page={{ paginate.previous_page }}">Previous</a>{% endif %}
-          {% if paginate.next %}<a href="?page={{ paginate.next_page }}">Next</a>{% endif %}
-        </div>
+    <div class="row">
 
-      {% endpaginate %}
-    {% endwith_scope %} -->
+      {% with_scope publication_date.lte: today %}
+        {% paginate contents.podcasts by 6 %}
+          {% for podcast in paginate.collection %}
 
-<<<<<<< HEAD
-    {% include navigation %}
-=======
-    <nav>
-      <a class="" href="/archief"><span>Archief</span></a>
-      <a class="" href="/"><span>Wat?</span></a>
-      <a class="" href="/"><span>Waar?</span></a>
-      <a class="" href="/"><span>Waarom?</span></a>
-      <a class="" href="/"><span>Wanneer?</span></a>
-    </nav>
->>>>>>> 983523afe1daeb310ed1394e1cb9549e7e3a5cad
+            <div class="col-4 col-md-6 col-sm-12">
+              {% include 'card_podcast' with podcast: podcast %}
+            </div>
+
+          {% endfor %}
+
+          {% comment %} <ul>
+          {% for podcast in paginate.collection %}
+            <li><a href="{% path_to podcast %}">{{ podcast.categorie }} | {{ podcast.naam }}</a></li>
+          {% endfor %}
+          </ul>
+          <div class="pagination">
+            {% if paginate.previous_page %}<a href="?page={{ paginate.previous_page }}">Previous</a>{% endif %}
+            {% if paginate.next %}<a href="?page={{ paginate.next_page }}">Next</a>{% endif %}
+          </div> {% endcomment %}
+
+        {% endpaginate %}
+      {% endwith_scope %}
+    </div>
+    
+    <section>
+      <h1>Laatste drie podcasts</h1>
+    </section>
+
+    <section>
+      <h1>Filmerds is een videopodcast voor en door liefhebbers van film!</h1>
+    </section>
 
   </div>
-
-  {% include 'footer' %}
-
 
 {% endblock %}

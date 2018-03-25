@@ -2,10 +2,25 @@
 title: Page not found
 published: true
 ---
-{% extends index %}
+{% extends 'layouts/default' %}
 
 {% block 'main' %}
 
-<p>Page not found</p>
+    <div class="container">
+        <section class="jumbotron">
+            <div>
+                <amp-img alt="Filmerds 404"
+                src="{{ '404.gif' | theme_image_url }}"
+                width="1920" height="1080"
+                layout="responsive"></amp-img>
+            </div>
+        </section>
+
+        {% include navigation %}        
+
+        <section>
+            <h1>Deze pagina bestaat niet!</h1>
+        </section>
+    </div>
 
 {% endblock %}

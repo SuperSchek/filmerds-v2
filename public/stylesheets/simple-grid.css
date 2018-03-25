@@ -124,6 +124,10 @@ p {
   width: 96%;
 }
 
+.col-12-md {
+  width: 96%;
+}
+
 .col-1-sm {
   width: 4.33%;
 }

@@ -1,55 +1,23 @@
-<footer>
-
-  <!-- <div id="footerTop">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-6">
-        </div>
-
-        <div class="col-6">
-          <amp-img alt="Filmerds Pixelated"
-                   src="{{ 'filmerds_pixel.jpg' | theme_image_url }}"
-                   width="1404" height="702"
-                   layout="responsive"></amp-img>
-        </div>
-
-      </div>
-    </div>
-  </div> -->
+<footer id="footer">
 
   <div id="footerBottom">
     <div class="container">
       <div class="row">
 
-        <div class="col-4 col-6-sm">
-          <address>
-            <a href="mailto:info@filmerds.nl">info@filmerds.nl</a>
-          </address>
+        <div class="col-4 col-6-sm hidden-sm">
+          <span>Coded with <b><3</b> by <a target="_blank" href="https://sanderschekman.com">SuperSchek</a></span>          
         </div>
 
-        <div class="col-4 hidden-sm center">
-          <span>Coded with <b><3</b> by <a target="_blank" href="https://sanderschekman.com">SuperSchek</a></span>
-          {% comment %}
+        <div class="col-4 col-7-sm center">
           <div class="social-links text-center">
 
-              <a href="https://www.youtube.com/channel/UCQtXVEMsLDGNCdoJ9TmCLJg" target="_blank"><img src="https://superschek.s3.eu-central-1.amazonaws.com/sites/588fcddfac9a2d001547fa34/content_entry588fcf78ac9a2d001547fa39/588fcfbfac9a2d001547fa51/files/YouTube.svg?1485819839" alt="YouTube" height="24px"></a>
-
-              <a href="https://itunes.apple.com/nl/podcast/filmerds-podcast/id1098182855?mt=2" target="_blank"><img src="https://superschek.s3.eu-central-1.amazonaws.com/sites/588fcddfac9a2d001547fa34/content_entry588fcf78ac9a2d001547fa39/588fcfc0ac9a2d001547fa54/files/Podcast.svg?1485819840" alt="Podcast" height="24px"></a>
-
-              <a href="https://www.facebook.com/Filmerds/" target="_blank">
-                <!-- <img src="{{ 'Facebook.svg' | theme_image_url }}" alt="Facebook" height="24px"> -->
-                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 121.05 121.05"><defs><style>.cls-1{fill:#fff;}</style></defs><title>Facebook</title><path class="cls-1" d="M128.41,14.48H21.59a7.14,7.14,0,0,0-7.12,7.12V128.41a7.14,7.14,0,0,0,7.12,7.12H128.41a7.14,7.14,0,0,0,7.12-7.12V21.59A7.14,7.14,0,0,0,128.41,14.48ZM89.9,55.2H82.69a3.14,3.14,0,0,0-2.87,2.61v7.46H89.88c-.4,5.72-1.23,11-1.23,11H79.77v29.94H66.54V76.22H60.11V65.31h6.44V56.39c0-1.63-.33-12.55,13.55-12.55h9.8Z" transform="translate(-14.48 -14.48)"/></svg>
-              </a>
-
-              <a href="https://twitter.com/filmerds" target="_blank"><img src="https://superschek.s3.eu-central-1.amazonaws.com/sites/588fcddfac9a2d001547fa34/content_entry588fcf78ac9a2d001547fa39/588fcfc2ac9a2d000b47fa45/files/Twitter.svg?1485819842" alt="Twitter" height="24px"></a>
+              {% include 'social_media' %}
 
           </div>
-          {% endcomment %}
         </div>
 
 
-        <div class="col-4 col-6-sm right">
+        <div class="col-4 col-5-sm right">
           <span>&copy; {{ now | date: '%Y' }} Filmerds</span>
         </div>
 
