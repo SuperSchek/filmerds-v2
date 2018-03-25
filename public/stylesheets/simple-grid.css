@@ -15,7 +15,7 @@ body {
   padding: 0;
   left: 0;
   top: 0;
-  font-size: 100%;
+  font-size: 95%;
 }
 
 /* ROOT FONT STYLES */
@@ -124,10 +124,6 @@ p {
   width: 96%;
 }
 
-.col-12-md {
-  width: 96%;
-}
-
 .col-1-sm {
   width: 4.33%;
 }
@@ -193,6 +189,10 @@ p {
 @media only screen and (min-width: 33.75em) {  /* 540px */
   .container {
     width: 80%;
+  }
+
+  body {
+    font-size: 100%;
   }
 }
 

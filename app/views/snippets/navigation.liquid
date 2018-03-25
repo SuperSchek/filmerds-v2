@@ -1,41 +1,30 @@
-
+{% comment %} 
 <div on="tap:sidebar.toggle"
   class="hidden-lg ampstart-btn caps m2">TOP KEK</div>
-
-<amp-sidebar id="sidebar"
-  layout="nodisplay"
-  side="right"
-  class="hidden-lg">
-  
-  <ul>
-    <li class="{% if page == 'home' %}active{% endif %}">
-      <a href="/">Home</a>
-    </li>
-    <li class="{% if page == 'archief' %}active{% endif %}">
-      <a href="/">Archief</a>
-    </li>
-    <li class="{% if page == 'contact' %}active{% endif %}">
-      <a href="#footer">Contact</a>
-    </li>
-  </ul>
-
+   {% endcomment %}
+<div class="nav-container">
   <div class="container">
-    <div class="row">  
-      <div class="col-12 center">
-        <div class="social-links text-center">
+    <div class="row">
 
-          {% include 'social_media' %}
-
-        </div>
+      <div class="col-4 col-12-sm">
+        <a href="/">
+          <amp-img alt="Filmerds Logo"
+                  src="{{ 'logo.png' | theme_image_url }}"
+                  width="60"
+                  height="60"
+                  layout="fixed">
+          </amp-img>
+        </a>
       </div>
+
+      <div class="col-8 hidden-sm">      
+        <nav>
+          <a class="btn-nav {% if page == 'home' %}active{% endif %}" href="/">Home</a>
+          <a class="btn-nav {% if page == 'archief' %}active{% endif %}" href="/archief">Archief</a>
+          <a class="btn-nav {% if page == 'contact' %}active{% endif %}" href="/contact">Contact</a>
+        </nav>
+      </div>
+      
     </div>
   </div>
-
-  <span>&copy; {{ now | date: '%Y' }} Filmerds</span>
-</amp-sidebar>
-
-<nav class="hidden-sm">
-  <a class="btn-nav {% if page == 'home' %}active{% endif %}" href="/">Home</a>
-  <a class="btn-nav {% if page == 'archief' %}active{% endif %}" href="/">Archief</a>
-  <a class="btn-nav {% if page == 'contact' %}active{% endif %}" href="/">Contact</a>
-</nav>
+</div>

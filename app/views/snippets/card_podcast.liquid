@@ -1,9 +1,23 @@
 {% capture youtube_id %}{{ podcast.youtube_url | split: 'https://www.youtube.com/watch?v=' }}{% endcapture %}
 
-<a href="{% path_to podcast %}">
-    <amp-img alt="{{ podcast.categorie }} | {{ podcast.naam }} Thumbnail"
-            src="https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg"
-            width="1920" height="1080"
-            layout="responsive"></amp-img>
-</a>
-{% comment %} <li><a href="{% path_to podcast %}">{{ podcast.categorie }} | {{ podcast.naam }}</a></li> {% endcomment %}
+<div class="card">
+    <a href="{% path_to podcast %}">
+        <amp-img alt="{{ podcast.categorie }} | {{ podcast.naam }} Thumbnail"
+                src="https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg"
+                width="1920" height="1080"
+                layout="responsive"></amp-img>
+    </a>
+
+    <h5 style="margin: 10px 0 0">
+        {{ podcast.categorie }} | {{ podcast.naam }}
+    </h5>
+
+    <span>
+        {{ podcast.publication_date | date: '%d %m %Y' }}
+    </span>
+
+    <div class="description">
+        {{ podcast.omschrijving | strip_html | truncate: 60 }}
+    </div>
+
+</div>

@@ -77,7 +77,7 @@ fields:
     label: Omschrijving
     type: text
     required: false
-    hint: Explanatory text displayed in the back office
+    hint: Omschrijving/Shownotes
     localized: false
 
 - publication_date:

@@ -1,0 +1,31 @@
+<amp-sidebar id="sidebar"
+             layout="nodisplay"
+             side="right"
+             class="hidden-lg">
+    
+    <ul>
+        <li class="{% if page == 'home' %}active{% endif %}">
+            <a href="/">Home</a>
+        </li>
+        <li class="{% if page == 'archief' %}active{% endif %}">
+            <a href="/">Archief</a>
+        </li>
+        <li class="{% if page == 'contact' %}active{% endif %}">
+            <a href="/contact">Contact</a>
+        </li>
+    </ul>
+
+    <div class="container">
+        <div class="row">  
+            <div class="col-12 center">
+                <div class="social-links text-center">
+
+                    {% include 'social_media' %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span>&copy; {{ now | date: '%Y' }} Filmerds</span>
+</amp-sidebar>
