@@ -32,7 +32,7 @@ response_type: application/xml
     {% if site.metafields.rss_settings.explicit %}yes{% else %}no{% endif %}
     </itunes:explicit>
 
-    {% with_scope publication_date.lte: today %}
+    {% with_scope publication_date.lte: now %}
       {% for episode in contents.podcasts %}
         <item>
           <itunes:episodeType>full</itunes:episodeType>

@@ -10,16 +10,15 @@ content_type: podcasts
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
-    <script async custom-element="amp-audio" src="https://cdn.ampproject.org/v0/amp-audio-0.1.js"></script>
 
-    <title>{{ podcast.categorie }} | {{ podcast.naam }} - Filmerds</title>
+    <title>{{ podcast.categorie }} | {{ podcast.naam }}</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link rel="canonical" href="https://www.filmerds.com{% path_to page %}">
 
     {% capture youtube_id %}{{ podcast.youtube_url | split: 'https://www.youtube.com/watch?v=' }}{% endcapture %}
 
     <!-- OpenGraph Data -->
-    <meta property="og:title" content="{{ podcast.categorie }} | {{ podcast.naam }} - Filmerds" />
+    <meta property="og:title" content="Filmerds - {{ podcast.categorie }} | {{ podcast.naam }}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://www.filmerds.com{% path_to page %}" />
     <meta property="og:image" content="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %}" />
@@ -31,7 +30,7 @@ content_type: podcasts
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@filmerds">
-    <meta name="twitter:title" content="{{ podcast.categorie }} | {{ podcast.naam }} - Filmerds">
+    <meta name="twitter:title" content="Filmerds - {{ podcast.categorie }} | {{ podcast.naam }}">
     <meta name="twitter:description" content="{{ podcast.omschrijving | strip_html }}">
     <meta name="twitter:image" content="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %}">
   
@@ -42,42 +41,59 @@ content_type: podcasts
 
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
-    {% include styles_default %}
+    {% if site.metafields.misc_settings.production == true %}
+      {% include styles_min %}      
+      {% include tracking %}
+    {% else %}
+      {% include styles_default %}
+    {% endif %}
   </head>
 
   <body>
-    {% include navigation %}    
-
-    <amp-youtube class="youtube-player"
-      width="1920"
-      height="1080"
-      class="youtube-player"
-      layout="responsive"
-      data-videoid="{{ youtube_id }}"
-      {% if site.metafields.misc_settings.autoplay == true %}autoplay{% endif %}>
-    </amp-youtube>
+    {% include navigation with back: true %}    
 
     <div class="container">
-      <div class="row">
-        <h2>{{ podcast.categorie }} | {{ podcast.naam }}</h2>
-
-        <span>{{ podcast.omschrijving }}<span>
-
-        <amp-audio src="{{ podcast.s3_url }}"
-                   artwork="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %}"
-                   title="{{ podcast.categorie }} | {{ podcast.naam }} - Filmerds"
-                   height="50"
-                   width="auto">
-          <div fallback>
-            <p>Your browser doesn’t support HTML5 audio</p>
+      <section class="pt-90">
+        <div class="row">
+          <div class="col-12">
+            <amp-youtube class="youtube-player"
+              width="1920"
+              height="1080"
+              class="youtube-player"
+              layout="responsive"
+              data-videoid="{{ youtube_id }}"
+              {% if site.metafields.misc_settings.autoplay == true %}autoplay{% endif %}>
+            </amp-youtube>
           </div>
-        </amp-audio>
-      </div>
+        </div>              
+      </section>
 
       <div class="row">
-        {% include 'suggested_podcasts' with categorie: podcast.categorie %}
+        <div class="col-12">
+          <h2 style="margin-bottom: 0;">{{ podcast.categorie }} | {{ podcast.naam }}</h2>
+
+          <span>
+            <strong class="secondary">{{ podcast.publication_date | date: '%d-%m-%Y' }}</strong>
+          </span>
+
+          <span>{{ podcast.omschrijving }}<span>
+
+          <div style="margin-top: 15px; font-size: 90%; ">
+            <span style="opacity: .8;">Luister deze aflevering via </span>
+            <a href="{{ site.metafields.social_media.itunes_url }}" target="_blank">iTunes</a><span>,</span>
+            <a href="https://overcast.fm/itunes1098182855/filmerds" target="_blank">Overcast</a>
+            <span>of</span>
+            <a href="{{ podcast.s3_url }}" target="_blank">direct download</a><span>!</span>
+          </div>
+        </div>
       </div>
+
+      <section class="pb-50">
+        {% include 'suggested_podcasts' with podcast: podcast %}
+      </section>
     </div>
+
+
 
     {% include 'footer' %}
 

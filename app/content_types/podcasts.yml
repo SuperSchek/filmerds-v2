@@ -54,7 +54,7 @@ fields:
       "Interview",
       "Praattafel",
       "Preview",
-      "Review",
+    "Review",
       "Special",
       "Statafel",
       "Stelling",
@@ -64,10 +64,6 @@ fields:
       "Filmerds in het kort"
       ]
     required: false
-
-- audio_file:
-    label: Audio File
-    type: file
 
 - thumbnail:
     label: Thumbnail

@@ -1,4 +1,4 @@
-<a href="{{ url }}" target="_blank">
+<a {% if alt == "RSS" or alt == "YouTube" %}class="hidden-sm"{% endif %} href="{{ url }}" target="_blank">
     <amp-img    alt="{{ alt }}"
                 src="{{ icon | theme_image_url }}"
                 width="24"

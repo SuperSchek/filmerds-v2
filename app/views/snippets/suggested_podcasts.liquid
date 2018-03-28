@@ -1,13 +1,33 @@
-<h2>Kijk verder!</h2>
+<div class="row">
+    <div class="col-12">
+        <h3>
+            {% if heading %}{{ heading }}{% else %}Kijk verder!{% endif %}
+        </h3>
+    </div>
+</div>
 
-<div class=".remove-col-margins">
-    {% with_scope publication_date.lte: today, categorie: categorie %}
+<div class="row">
+    {% with_scope publication_date.lte: now, categorie: podcast.categorie %}
         {% paginate contents.podcasts by 3 %}
-            {% for podcast in paginate.collection %}
+            {% for suggested_podcast in paginate.collection %}
 
-                <div class="col-4 col-md-6 col-sm-12">
-                    {% include 'card_podcast' with podcast: podcast %}
-                </div>
+                {% unless suggested_podcast._slug == podcast._slug %}
+                    <div class="col-4 col-sm-12">
+                        {% include 'card_podcast' with podcast: suggested_podcast %}
+                    </div>
+                {% else %}
+                    {% with_scope publication_date.lte: now, categorie: podcast.categorie %}
+                        {% paginate contents.podcasts by 4 %}
+                            {% for extra_podcast in paginate.collection %}
+                                {% if forloop.last %}
+                                    <div class="col-4 col-sm-12">
+                                        {% include 'card_podcast' with podcast: extra_podcast %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endpaginate %}
+                    {% endwith_scope %}
+                {% endunless %}
 
             {% endfor %}
         {% endpaginate %}

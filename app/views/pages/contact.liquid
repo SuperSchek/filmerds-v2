@@ -6,9 +6,96 @@ published: true
 {% extends 'layouts/default' %}
 
 {% block 'main' %}
+  {% action 'Form submission' %}
+    if (params.email) {
+      var bericht = createEntry( 'berichten', {naam: params.name,
+                                               subject: params.subject,
+                                               email: params.email,
+                                               bericht: params.message });      
+      setProp('bericht', bericht);
+    }
+  {% endaction %}
 
-  <div class="container">
-    {% include navigation with page: 'contact' %}    
-  </div>
+  {% include navigation with page: 'contact' %}
+
+  <section class="pt-50 pb-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2>Contact</h2>
+        </div>
+      </div>
+
+      {% if bericht.errors %}
+        <div class="row">
+          <div class="col-12">
+            <ul>
+              {% for error in bericht.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% elsif bericht %}
+        <div class="row">
+          <div class="col-12">
+            Je bericht is verstuurd! We nemen zo snel mogelijk contact met je op.
+          </div>
+        </div>
+      {% endif %}
+        
+      <div class="row">
+        <div class="col-12">
+          <h3>
+            {% editable_text "Contact Heading" %}
+                Stuur ons een bericht!
+            {% endeditable_text %}
+          </h3>
+        </div>
+        <form method="get"
+              class="p2"
+              action="/contact"
+              target="_top">
+          
+            <div class="col-12-sm col-6">
+              <input  type="text"
+                      class="contact-input"
+                      name="name"
+                      placeholder="Naam"
+                      required>
+            </div>
+            <div class="col-12-sm col-6">
+              <input  type="email"
+                      class="contact-input"
+                      name="email"
+                      placeholder="Email"
+                      required>
+              </div>
+          
+            <div class="col-12">
+              <input  type="text"
+                      class="contact-input"
+                      name="subject"
+                      placeholder="Onderwerp"
+                      required>
+            </div>
+            <div class="col-12">
+              <textarea name="message"
+                        style="min-height: 5rem;"
+                        placeholder="Wat wil je kwijt?"
+                        class="contact-input"
+                        required></textarea>
+            </div>
+
+            <div class="col-12">            
+              <input  type="submit"
+                      value="Versturen"
+                      class="btn-contact">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}

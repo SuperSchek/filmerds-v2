@@ -89,3 +89,7 @@ misc_settings:
       type: boolean
       label: YouTube Autoplay
       hint: Autoplay YouTube video op de podcast pagina
+    production:
+      type: boolean
+      label: Production
+      hint: Set to true on production to render HotJar and Analytics Scripts

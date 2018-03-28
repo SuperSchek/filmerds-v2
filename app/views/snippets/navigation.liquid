@@ -6,12 +6,12 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-4 col-12-sm">
-        <a href="/">
+      <div class="col-4 col-10-sm">
+        <a class="flex" href="/">
           <amp-img alt="Filmerds Logo"
                   src="{{ 'logo.png' | theme_image_url }}"
-                  width="60"
-                  height="60"
+                  width="40"
+                  height="40"
                   layout="fixed">
           </amp-img>
         </a>
@@ -25,6 +25,14 @@
         </nav>
       </div>
       
+      <div class="col-2-sm right white hidden-lg" on="tap:sidebar.toggle">
+        <div class="icon-hamburger-wrap">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="#fff" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+          </svg>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

@@ -6,44 +6,80 @@ listed: false
 published: true
 is_layout: false
 ---
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"> <!-- Set character encoding for the document -->
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ site.name }}</title>
-    <meta name="keywords" value="{{ site.meta_keywords }}" />
-    <meta name="description" value="{{ site.meta_description }}" />
-    {{ 'style.min.css' | stylesheet_tag }}
-    <script
-			  src="http://code.jquery.com/jquery-3.3.1.min.js"
-			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			  crossorigin="anonymous"></script>
-  </head>
-  <body>
-    {% block 'main' %}
-      {% include jumbo_styles %}
-      <section class="jumbotron">
-        <div>
-          {% assign yt_link = "https://www.youtube.com/watch?v=gEeRhlnhxNQ" %}
-          <div class="yt-container">
-            <iframe class="yt-video" src="https://www.youtube.com/embed/{{ yt_link | split: 'https://www.youtube.com/watch?v=' }}" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <img style="margin:auto; width: 50vw;" src="{{ 'filmerds_pixel.jpg' | theme_image_url }}" />
-        </div>
-        <nav >
-        </nav>
-      </section>
-      <section class="navigation">
-        <nav>
-          <a class="btn-nav" href="/">Archief</a>
-          <a class="btn-nav" href="/">Wat?</a>
-          <a class="btn-nav" href="/">Waar?</a>
-          <a class="btn-nav" href="/">Waarom?</a>
-          <a class="btn-nav" href="/">Wanneer?</a>
-        </nav>
-      </section>
-    {% endblock %}
-  </body>
-</html>
+{% action "Query archive" %}
+  if (params.search) {
+    setProp("query", params.search);
+  }
+{% endaction %}
+
+{% extends 'layouts/default' %}
+
+{% block 'main' %}
+
+  {% include navigation with page: 'archief' %}
+
+  <div class="container">
+    <section class="archief pt-50 pb-50">
+      <div class="row">
+        <div class="col-12">
+          <h2>
+            {% if params.search and params.search != "" %}
+              Resultaten voor: {{ params.search }}
+            {% else %}
+              {% editable_text "Heading Tekst" %}
+                Doorzoek de Filmerds lore!
+              {% endeditable_text %}
+            {% endif %}
+          </h2>
+        </div>        
+      </div>
+
+
+      <div class="row">
+        <div class="col-12">
+        <form method="GET"
+              class=""
+              action="/archief"
+              target="_top">
+          <div class="searchwrap">
+              <input type="search"
+                      placeholder="Vind de lore..."
+                      name="search"
+                      class="search"
+                      {% if params.search %}value="{{ params.search }}"{% endif %}>
+          </div><input type="submit"
+                value="Zoeken"
+                class="btn btn-search">
+        </form>
+        </div>        
+      </div>
+
+      {% capture 'query_regex' %}/{{ query }}/i{% endcapture %}
+        
+      <div class="row">
+          {% with_scope publication_date.lte: now, naam: query_regex %}
+            {% unless contents.podcasts.count == 0 %}
+              {% paginate contents.podcasts by 9 %}
+                {% for podcast in paginate.collection %}
+
+                  <div class="col-4 col-md-6 col-sm-12">
+                    {% include 'card_podcast' with podcast: podcast %}
+                  </div>
+
+                {% endfor %}
+
+                <div class="col-12">
+                  {{ paginate | default_pagination }}
+                </div>
+              {% endpaginate %}
+            {% else %}
+              <div class="col-12">            
+                Geen resultaten voor: {{ params.search }}
+              </div>
+            {% endunless %}
+          {% endwith_scope %}
+      </div>
+    </section>
+  </div>
+
+{% endblock %}

@@ -3,21 +3,26 @@
 <div class="card">
     <a href="{% path_to podcast %}">
         <amp-img alt="{{ podcast.categorie }} | {{ podcast.naam }} Thumbnail"
-                src="https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg"
+                src="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %}"
                 width="1920" height="1080"
                 layout="responsive"></amp-img>
     </a>
 
-    <h5 style="margin: 10px 0 0">
+    <h4 style="margin: 10px 0 0">
         {{ podcast.categorie }} | {{ podcast.naam }}
-    </h5>
+    </h4>
 
-    <span>
-        {{ podcast.publication_date | date: '%d %m %Y' }}
+    <span class="secondary">
+        {{ podcast.publication_date | date: '%d-%m-%Y' }}
     </span>
 
     <div class="description">
-        {{ podcast.omschrijving | strip_html | truncate: 60 }}
+        {{ podcast.omschrijving | strip_html | concat_words: 15 }}
     </div>
+
+    <a class="btn-watch" href="{% path_to podcast %}">
+        <span>Bekijk aflevering</span>
+    </a>
+
 
 </div>

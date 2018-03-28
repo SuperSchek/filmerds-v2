@@ -12,65 +12,53 @@ is_layout: false
 {% block 'main' %}
 
   {% include navigation with page: 'home' %}
-
-  <section class="jumbotron">
-    <div>
-
-      {% with_scope publication_date.lte: today %}
-
-        {% assign latest = contents.podcasts.first %}
-
-        <amp-youtube class="youtube-player"
-                     width="1920"
-                     height="1080"
-                     class="youtube-player"
-                     layout="responsive"
-                     data-videoid="g6U20NFRd8w"
-                     autoplay>
-        </amp-youtube>
-
-      {% endwith_scope %}
-    </div>
-  </section>
-    
+  
   <div class="container">
-    <section>
-        <h3>
-          Filmerds is een podcast voor en door liefhebbers van film! 
-        </h3>
+    <section class="pt-50" style="padding-top: 90px;">
+       <div class="row">
+        <div class="col-12">          
+
+            <amp-youtube class="youtube-player"
+                        width="1920"
+                        height="1080"
+                        class="youtube-player"
+                        layout="responsive"
+                        data-videoid="g6U20NFRd8w"
+                        autoplay>
+            </amp-youtube>
+
+        </div>
+      </div>      
     </section>  
 
-    <section>
+    <section class="pb-50">
       <div class="row">
-        <h2>
-          Bekijk onze podcasts!      
-        </h2>
-      </div>
-
-      <div class="row remove-col-margins">
-          {% with_scope publication_date.lte: today %}
-            {% paginate contents.podcasts by 6 %}
-              {% for podcast in paginate.collection %}
-
-                <div class="col-4 col-md-6 col-sm-12">
-                  {% include 'card_podcast' with podcast: podcast %}
-                </div>
-
-              {% endfor %}
-            {% endpaginate %}
-          {% endwith_scope %}
+        <div class="col-12">      
+          <h2>
+            Bekijk onze podcasts!      
+          </h2>
+        </div>        
       </div>
 
       <div class="row">
-        <div class="fw center">
+        {% with_scope publication_date.lte: now %}
+          {% paginate contents.podcasts by 6 %}
+            {% for podcast in paginate.collection %}
+
+              <div class="col-4 col-md-6 col-sm-12">
+                {% include 'card_podcast' with podcast: podcast %}
+              </div>
+
+            {% endfor %}
+          {% endpaginate %}
+        {% endwith_scope %}
+      </div>
+
+      <div class="row">
+        <div class="fw center pt-25">
           <a class="btn-nav" href="/archief">Meer afleveringen!</a>
         </div>
       </div>
-    </section>
-    
-
-    <section>
-      <h1>Filmerds is een videopodcast voor en door liefhebbers van film!</h1>
     </section>
 
   </div>

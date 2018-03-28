@@ -4,28 +4,30 @@
              class="hidden-lg">
     
     <ul>
-        <li class="{% if page == 'home' %}active{% endif %}">
+        <li class="{% if page == 'home' %}active-mob{% endif %}">
             <a href="/">Home</a>
         </li>
-        <li class="{% if page == 'archief' %}active{% endif %}">
-            <a href="/">Archief</a>
+        <li class="{% if page == 'archief' %}active-mob{% endif %}">
+            <a href="/archief">Archief</a>
         </li>
-        <li class="{% if page == 'contact' %}active{% endif %}">
+        <li class="{% if page == 'contact' %}active-mob{% endif %}">
             <a href="/contact">Contact</a>
         </li>
     </ul>
+    
+    <div class="mobnav-footer-wrap">
+        <div class="container">
+            <div class="row">  
+                <div class="col-12 center">
+                    <div class="social-links text-center">
 
-    <div class="container">
-        <div class="row">  
-            <div class="col-12 center">
-                <div class="social-links text-center">
+                        {% include 'social_media' %}
 
-                    {% include 'social_media' %}
-
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <span>&copy; {{ now | date: '%Y' }} Filmerds</span>
     </div>
-
-    <span>&copy; {{ now | date: '%Y' }} Filmerds</span>
 </amp-sidebar>

@@ -6,22 +6,64 @@ published: true
 
 {% block 'main' %}
 
+    {% include navigation with back: true %}    
+
     <div class="container">
-        <section class="jumbotron">
-            <div>
-                <amp-img alt="Filmerds 404"
-                         src="{{ '404.gif' | theme_image_url }}"
-                         width="1920"
-                         height="1080"
-                         layout="responsive">
-                </amp-img>
-            </div>
+        <section class="pt-90">
+            <div class="row">
+                <div class="col-12">
+                    <amp-img alt="Filmerds 404"
+                            src="{{ '404.gif' | theme_image_url }}"
+                            width="1920"
+                            height="1080"
+                            layout="responsive">
+                    </amp-img>
+                </div>
+            </div>              
         </section>
 
-        {% include navigation %}        
-
         <section>
-            <h1>Deze pagina bestaat niet!</h1>
+            <div class="row">
+                <div class="col-12">            
+                    <h2>
+                        {% editable_text "404 Heading", hint: "Informeer gebruiker dat deze pagina niet bestaat." %}
+                            404 - Filmerds not found!
+                        {% endeditable_text %}
+                    </h2>
+
+                    <p>
+                        {% editable_text "404 Text" %}
+                            De pagina die je probeerd te berijken lijkt niet te bestaan. Denk je dat dit een fout is? Neem dan contact met ons op.
+                        {% endeditable_text %}
+                    </p>
+                </div>
+            </div>            
+        </section>
+
+        <section class="pb-50">
+            <div class="row">
+                <div class="col-12">
+                    <h3>
+                        {% editable_text "404 CTA" %}
+                            Check gerust een van onze video's
+                        {% endeditable_text %}
+                    </h3>
+                </div>
+            </div>
+
+            <div class="row">            
+                {% with_scope publication_date.lte: now %}
+                    {% paginate contents.podcasts by 3 %}
+                        {% for podcast in paginate.collection %}
+
+                        <div class="col-4 col-md-6 col-sm-12">
+                            {% include 'card_podcast' with podcast: podcast %}
+                        </div>
+
+                        {% endfor %}
+                    {% endpaginate %}
+                {% endwith_scope %}
+            </div>
         </section>
     </div>
 

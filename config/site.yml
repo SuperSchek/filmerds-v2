@@ -45,7 +45,8 @@ metafields:
       Elke maand bespreken we in samenwerking met Filmdomein de grote releases van
       die maand.
   misc_settings:
-    autoplay: '1'
+    autoplay: '0'
+    production: false
   social_media:
     youtube_url: https://www.youtube.com/channel/UCQtXVEMsLDGNCdoJ9TmCLJg
     facebook_url: https://www.facebook.com/Filmerds/

@@ -246,7 +246,7 @@ p {
   }
 
   .hidden-sm {
-    display: block;
+    display: inline-block;
   }
 
   .hidden-lg {
