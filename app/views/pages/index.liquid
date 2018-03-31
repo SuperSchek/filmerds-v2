@@ -5,11 +5,18 @@ position: 1
 listed: true
 published: true
 is_layout: false
+editable_elements:
+  main/Biografie Heading: Wij zijn Filmerds!
+  main/Biografie Cpmtent: Goed verhaal
+
 ---
 
 {% extends 'layouts/default' %}
 
 {% block 'main' %}
+  {% if site.metafields.misc_settings.production == true %}
+      {% include tracking_body %}
+  {% endif %}
 
   {% include navigation with page: 'home' %}
   
@@ -29,7 +36,28 @@ is_layout: false
 
         </div>
       </div>      
-    </section>  
+    </section>
+    
+    {% if site.metafields.misc_settings.bio == true %}
+
+    <section>
+    <div class="row">
+        <div class="col-12">
+          <h1>
+            {% editable_text "Biografie Heading" %}
+                Wij zijn Filmerds!
+            {% endeditable_text %}
+          </h1>
+
+          <p>
+            {% editable_text "Biografie Cpmtent" %}
+                Goed verhaal
+            {% endeditable_text %}
+          </p>
+        </div>
+    </section>
+
+    {% endif %}
 
     <section class="pb-50">
       <div class="row">

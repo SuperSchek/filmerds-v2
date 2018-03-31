@@ -2,10 +2,17 @@
 title: Contact
 listed: true
 published: true
+editable_elements:
+  main/Contact Heading: Stuur ons een bericht!
+
 ---
 {% extends 'layouts/default' %}
 
 {% block 'main' %}
+  {% if site.metafields.misc_settings.production == true %}
+      {% include tracking_body %}
+  {% endif %}
+  
   {% action 'Form submission' %}
     if (params.email) {
       var bericht = createEntry( 'berichten', {naam: params.name,

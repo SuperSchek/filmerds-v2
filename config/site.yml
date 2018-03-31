@@ -29,7 +29,7 @@ meta_description: "Een podcast voor en door liefhebbers van film!"
 
 metafields:
   rss_settings:
-    title: Filmerds (Staging)
+    title: Filmerds
     cover_art: "/samples/assets/CoverArt_3000.png"
     language: nl
     link: https://www.filmerds.com/podcasts
@@ -46,7 +46,8 @@ metafields:
       die maand.
   misc_settings:
     autoplay: '0'
-    production: false
+    production: '0'
+    bio: '0'
   social_media:
     youtube_url: https://www.youtube.com/channel/UCQtXVEMsLDGNCdoJ9TmCLJg
     facebook_url: https://www.facebook.com/Filmerds/

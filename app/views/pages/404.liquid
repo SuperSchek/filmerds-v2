@@ -5,6 +5,9 @@ published: true
 {% extends 'layouts/default' %}
 
 {% block 'main' %}
+    {% if site.metafields.misc_settings.production == true %}
+        {% include tracking_body %}
+    {% endif %}
 
     {% include navigation with back: true %}    
 

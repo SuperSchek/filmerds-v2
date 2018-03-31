@@ -5,6 +5,9 @@ position: 99
 listed: false
 published: true
 is_layout: false
+editable_elements:
+  main/Heading Tekst: Doorzoek de Filmerds lore!
+
 ---
 {% action "Query archive" %}
   if (params.search) {
@@ -15,6 +18,9 @@ is_layout: false
 {% extends 'layouts/default' %}
 
 {% block 'main' %}
+  {% if site.metafields.misc_settings.production == true %}
+    {% include tracking_body %}
+  {% endif %}
 
   {% include navigation with page: 'archief' %}
 

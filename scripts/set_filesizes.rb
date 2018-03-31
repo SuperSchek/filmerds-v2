@@ -15,7 +15,7 @@ podcasts = YAML.load_file('../data/podcasts.yml')
 
 # Initiate LocomotiveCMS Coal Client
 client = Locomotive::Coal::Client.new('https://engine.sanderschekman.com', { email: ENV['ENGINE_EMAIL'], api_key: ENV['ENGINE_API_KEY'] })
-site = client.sites.by_handle('filmerds-staging')
+site = client.sites.by_handle('filmerds')
 site_client = client.scope_by(site)
 
 # Sends a head request to the S3 URL and returns filesize in bytes
