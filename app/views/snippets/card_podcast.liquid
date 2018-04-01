@@ -3,11 +3,10 @@
 <div class="card">
     <a href="{% path_to podcast %}">
         <amp-img alt="{{ podcast.categorie }} | {{ podcast.naam }} Thumbnail"
-                src="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %}",
-                srcset="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %} 800w,
-                {% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/mqdefault.jpg{% endunless %} 500w"
-                width="1920"
-                height="1080"
+                src="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %}"
+                srcset="{% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg{% endunless %} 800w, {% unless podcast.thumbnail.url == blank %}{{ podcast.thumbnail.url }}{% else %}https://img.youtube.com/vi/{{ youtube_id }}/mqdefault.jpg{% endunless %} 500w"
+                width="480"
+                height="270"
                 layout="responsive">
                 <div fallback>Thumbnail niet gevonden</div>
                 </amp-img>
