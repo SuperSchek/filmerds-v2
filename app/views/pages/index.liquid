@@ -8,7 +8,6 @@ is_layout: false
 editable_elements:
   main/Biografie Heading: Wij zijn Filmerds!
   main/Biografie Cpmtent: Goed verhaal
-
 ---
 
 {% extends 'layouts/default' %}
@@ -18,7 +17,7 @@ editable_elements:
       {% include tracking_body %}
   {% endif %}
 
-  {% include navigation with page: 'home' %}
+  {% include navigation %}
   
   <div class="container">
     <section class="pt-50" style="padding-top: 90px;">
@@ -37,27 +36,6 @@ editable_elements:
         </div>
       </div>      
     </section>
-    
-    {% if site.metafields.misc_settings.bio == true %}
-
-    <section>
-    <div class="row">
-        <div class="col-12">
-          <h1>
-            {% editable_text "Biografie Heading" %}
-                Wij zijn Filmerds!
-            {% endeditable_text %}
-          </h1>
-
-          <p>
-            {% editable_text "Biografie Cpmtent" %}
-                Goed verhaal
-            {% endeditable_text %}
-          </p>
-        </div>
-    </section>
-
-    {% endif %}
 
     <section class="pb-50">
       <div class="row">
@@ -88,6 +66,48 @@ editable_elements:
         </div>
       </div>
     </section>
+
+    {% comment %}    
+    <section>
+      <div class="row">
+        <div class="col-12">      
+          <h2>
+            Filmerds op Instagram!
+          </h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <amp-instagram
+            data-shortcode="Bg32I3PlSDy"
+            data-captioned
+            width="400"
+            height="400"
+            layout="responsive">
+          </amp-instagram>
+        </div>
+        <div class="col-4">
+          <amp-instagram
+            data-shortcode="Bfgp-fgleiT"
+            data-captioned
+            width="400"
+            height="400"
+            layout="responsive">
+          </amp-instagram>
+        </div>
+        <div class="col-4">
+          <amp-instagram
+            data-shortcode="fBwFP"
+            data-captioned
+            width="400"
+            height="400"
+            layout="responsive">
+          </amp-instagram>
+        </div>
+      </div>
+    </section>
+    {% endcomment %}
 
   </div>
 

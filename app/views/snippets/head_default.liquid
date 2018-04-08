@@ -1,50 +1,51 @@
 <head>
-  <meta charset="utf-8">
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
-  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>
 
-  <title>{{ site.seo_title }}{% unless page.title == 'Home' %} | {{ page.title }}{% endunless %}</title>
-  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  <link rel="canonical" href="https://www.filmerds.com{% path_to page %}">
+    <title>{{ site.seo_title }}{% unless page.title == 'Home' %} | {{ page.title }}{% endunless %}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="canonical" href="https://www.filmerds.com{% path_to page %}">
 
-  <!-- OpenGraph Data -->
-  <meta property="og:title" content="{{ site.seo_title }}" />
-  <meta property="og:description" content="{{ site.meta_description }}" />
-  <meta property="og:type" content="site" />
-  <meta property="og:url" content="{{ base_url }}" />
-  <meta property="og:image" content="{{ 'Filmerds_pixel.jpg' | theme_image_url }}" />
+    <!-- OpenGraph Data -->
+    <meta property="og:title" content="{{ site.seo_title }}" />
+    <meta property="og:description" content="{{ site.meta_description }}" />
+    <meta property="og:type" content="site" />
+    <meta property="og:url" content="{{ base_url }}" />
+    <meta property="og:image" content="{{ 'Filmerds_pixel.jpg' | theme_image_url }}" />
 
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@filmerds">
-  <meta name="twitter:description" content="{{ site.meta_description }}">
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@filmerds">
+    <meta name="twitter:description" content="{{ site.meta_description }}">
 
-  <meta name="theme-color" content="#385c80">
-  <meta name="keywords" content="{{ site.meta_keywords }}" />
-  <meta name="description" content="{{ site.meta_description }}" />
-  <meta name="subject" content="Nederlandse podcast over films">
+    <meta name="theme-color" content="#385c80">
+    <meta name="keywords" content="{{ site.meta_keywords }}" />
+    <meta name="description" content="{{ site.meta_description }}" />
+    <meta name="subject" content="Nederlandse podcast over films">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/favicon-16x16.png">
-  <link rel="manifest" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/site.webmanifest">
-  <link rel="mask-icon" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/safari-pinned-tab.svg" color="#385c80">
-  <link rel="shortcut icon" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#385c80">
-  <meta name="msapplication-config" content="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/site.webmanifest">
+    <link rel="mask-icon" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/safari-pinned-tab.svg" color="#385c80">
+    <link rel="shortcut icon" href="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#385c80">
+    <meta name="msapplication-config" content="https://s3.eu-central-1.amazonaws.com/filmerds-podcast-wp/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 
-  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 
-  {% comment %} {{ 'simple-grid.css' | stylesheet_tag }} {% endcomment %}
+    {% comment %} {{ 'simple-grid.css' | stylesheet_tag }} {% endcomment %}
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic">
-  {% if site.metafields.misc_settings.production == true %}
-      {% include styles_min %}      
-      {% include tracking %}
-  {% else %}
-      {% include styles_default %}
-  {% endif %}
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic">
+    {% if site.metafields.misc_settings.production == true %}
+        {% include styles_min %}      
+        {% include tracking %}
+    {% else %}
+        {% include styles_default %}
+    {% endif %}
 </head>

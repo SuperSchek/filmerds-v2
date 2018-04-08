@@ -13,15 +13,16 @@
         </a>
       </div>
 
-      <div class="col-8 hidden-sm">      
-        <nav>
-          <a class="btn-nav {% if page == 'home' %}active{% endif %}" href="/">Home</a>
-          <a class="btn-nav {% if page == 'archief' %}active{% endif %}" href="/archief">Archief</a>
-          <a class="btn-nav {% if page == 'contact' %}active{% endif %}" href="/contact">Contact</a>
+      <div class="col-8 hidden-sm">
+        <nav id="nav" class="nav">
+          <ul>
+            <li {% if page.slug == 'index' %}class="active"{% endif %}><a href="/">Home</a></li>
+            {% nav site, active_class: 'active', no_wrapper: true %}
+          </ul>
         </nav>
       </div>
       
-      <button class="col-2-sm right white hidden-lg" on="tap:sidebar.toggle">
+      <button class="col-8 col-2-sm right white hidden-lg" on="tap:sidebar.toggle">
         <div class="icon-hamburger-wrap">
           <svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="#fff" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />

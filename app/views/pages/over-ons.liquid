@@ -1,0 +1,58 @@
+---
+title: Over ons
+listed: true
+published: true
+handle: over_ons
+editable_elements:
+  main/Afbeelding: "/samples/assets/filmerds_pixel.jpg"
+  main/Biografie Heading: Wij zijn Filmerds!
+  main/Biografie Cpmtent: Wij zijn de mannen van Filmerds!<div><br></div><div>Twee
+    keer per week brengen wij coole podcasts uit over films. Dat doen we in zowel
+    video als audio formaat.</div>
+---
+
+{% extends 'layouts/default' %}
+
+{% block 'main' %}
+  {% if site.metafields.misc_settings.production == true %}
+      {% include tracking_body %}
+  {% endif %}
+
+  {% include navigation %}
+  
+  <div class="container">
+    <section class="pt-50" style="padding-top: 90px;">
+       <div class="row">
+        <div class="col-12">          
+
+          <amp-img alt="Filmerds"
+                    src="{% editable_file 'Afbeelding', hint: 'Upload een banner', priority: 1 %}/samples/filmerds_pixel.jpg{% endeditable_file %}"
+                    width="1404"
+                    height="702"
+                    layout="responsive">
+          </amp-img>
+
+        </div>
+      </div>      
+    </section>
+
+    <section>
+      <div class="row">
+        <div class="col-12">
+          <h1>
+            {% editable_text "Biografie Heading", format: raw, rows: 1 %}
+                Wij zijn Filmerds!
+            {% endeditable_text %}
+          </h1>
+
+          <p>
+            {% editable_text "Biografie Cpmtent" %}
+                Goed verhaal
+            {% endeditable_text %}
+          </p>
+        </div>
+    </section>
+
+  </div>
+
+{% endblock %}

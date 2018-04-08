@@ -89,10 +89,6 @@ misc_settings:
       type: boolean
       label: YouTube Autoplay
       hint: Autoplay YouTube video op de podcast pagina
-    bio:
-      type: boolean
-      label: Biografie
-      hint: Bio op de home pagina
     production:
       type: boolean
       label: Production

@@ -30,11 +30,11 @@ meta_description: "Een podcast voor en door liefhebbers van film!"
 metafields:
   rss_settings:
     title: Filmerds
-    cover_art: "/samples/assets/CoverArt_3000.png"
+    cover_art: "/samples/assets/filmerds_logo_3000-min.png"
     language: nl
-    link: https://www.filmerds.com/podcasts
+    link: https://www.filmerds.com/
     subtitle: Een podcast voor en door liefhebbers van film!
-    copyright: "&#xA9; 2016 - 2018 Filmerds"
+    copyright: "&#xA9; 2018 Filmerds"
     owner_name: Sander Schekman
     owner_email: aaschekman@icloud.com
     explicit: '1'
@@ -46,7 +46,7 @@ metafields:
       die maand.
   misc_settings:
     autoplay: '0'
-    production: '0'
+    production: '1'
     bio: '0'
   social_media:
     youtube_url: https://www.youtube.com/channel/UCQtXVEMsLDGNCdoJ9TmCLJg

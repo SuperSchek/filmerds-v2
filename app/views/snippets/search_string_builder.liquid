@@ -1,0 +1,9 @@
+{% if noresults_catch %}Geen resultaten{% else %}Resultaten{% endif %}
+{% if params.search and params.search != "" %}
+    voor: {{ params.search }}
+    {% if params.category and params.category != "" %}
+        in {{ params.category }}
+    {% endif %}
+{% else %}
+    in {{ params.category }}
+{% endif %}

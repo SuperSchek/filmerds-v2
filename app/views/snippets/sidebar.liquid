@@ -1,18 +1,11 @@
 <amp-sidebar id="sidebar"
              layout="nodisplay"
-             side="right"
-             class="hidden-lg">
+             side="right">
     
-    <ul>
-        <li class="{% if page == 'home' %}active-mob{% endif %}">
-            <a href="/">Home</a>
-        </li>
-        <li class="{% if page == 'archief' %}active-mob{% endif %}">
-            <a href="/archief">Archief</a>
-        </li>
-        <li class="{% if page == 'contact' %}active-mob{% endif %}">
-            <a href="/contact">Contact</a>
-        </li>
+
+    <ul id="nav-mob">
+        <li {% if page.slug == 'index' %}class="active"{% endif %}><a href="/">Home</a></li>
+        {% nav site, active_class: 'active', no_wrapper: true %}
     </ul>
     
     <div class="mobnav-footer-wrap">

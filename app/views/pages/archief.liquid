@@ -2,12 +2,11 @@
 title: Archief
 slug: archief
 position: 99
-listed: false
+listed: true
 published: true
 is_layout: false
 editable_elements:
   main/Heading Tekst: Doorzoek de Filmerds lore!
-
 ---
 {% action "Query archive" %}
   if (params.search) {
@@ -29,8 +28,8 @@ editable_elements:
       <div class="row">
         <div class="col-12">
           <h2>
-            {% if params.search and params.search != "" %}
-              Resultaten voor: {{ params.search }}
+            {% if params.search or params.category %}
+              {% include search_string_builder %}
             {% else %}
               {% editable_text "Heading Tekst" %}
                 Doorzoek de Filmerds lore!
@@ -42,48 +41,78 @@ editable_elements:
 
 
       <div class="row">
-        <div class="col-12">
-        <form method="GET"
-              class=""
-              action="/archief"
-              target="_top">
-          <div class="searchwrap">
-              <input type="search"
-                      placeholder="Vind de lore..."
-                      name="search"
-                      class="search"
-                      {% if params.search %}value="{{ params.search }}"{% endif %}>
-          </div><input type="submit"
-                value="Zoeken"
-                class="btn btn-search">
-        </form>
-        </div>        
+        <div class="col-9">      
+          <form method="GET"
+                action="/archief"
+                target="_top">
+            <div class="searchwrap">
+                <input type="search"
+                        placeholder="Vind de lore..."
+                        name="search"
+                        class="search"
+                        {% if params.search %}value="{{ params.search }}"{% endif %}>
+                  {% if params.category %}
+                    <input type="text"
+                           name="category"
+                           class="hidden"
+                           value="{{ params.category }}">
+                  {% endif %}
+            </div><input type="submit"
+                  value="Zoeken"
+                  class="btn btn-search">
+            </form>
+          </div>
+
+          <div class="col-3">
+          <form method="GET"
+                action="/archief"
+                target="_top"
+                id="category-form">
+            <select name="category"
+                	  class="filter"
+                    on="change:category-form.submit"
+                    value="HAL">
+              <option value="">Filter</option>
+              <option value="Discussie" {% if params.category == "Discussie" %}selected{% endif %}>Discussie</option>
+              <option value="Favorieten" {% if params.category == "Favorieten" %}selected{% endif %}>Favorieten</option>
+              <option value="Filmnieuws" {% if params.category == "Filmnieuws" %}selected{% endif %}>Filmnieuws</option>
+              <option value="Het oeuvre van" {% if params.category == "Het oeuvre van" %}selected{% endif %}>Het oeuvre van</option>
+              <option value="Interview" {% if params.category == "Interview" %}selected{% endif %}>Interview</option>
+              <option value="Praattafel" {% if params.category == "Praattafel" %}selected{% endif %}>Praattafel</option>
+              <option value="Preview" {% if params.category == "Preview" %}selected{% endif %}>Preview</option>
+              <option value="Review" {% if params.category == "Review" %}selected{% endif %}>Review</option>
+              <option value="Special" {% if params.category == "Special" %}selected{% endif %}>Special</option>
+              <option value="Statafel" {% if params.category == "Statafel" %}selected{% endif %}>Statafel</option>
+              <option value="Stelling" {% if params.category == "Stelling" %}selected{% endif %}>Stelling</option>
+              <option value="Terugblik" {% if params.category == "Terugblik" %}selected{% endif %}>Terugblik</option>
+              <option value="Voorbeschouwing" {% if params.category == "Voorbeschouwing" %}selected{% endif %}>Voorbeschouwing</option>
+              <option value="Vooruitblik" {% if params.category == "Vooruitblik" %}selected{% endif %}>Vooruitblik</option>
+              {% comment %} <option value="Filmerds in het kort">Filmerds in het kort</option> {% endcomment %}
+            </select>
+
+            {% if params.search %}
+              <input type="text"
+                     name="search"
+                     class="hidden"
+                     value="{{ params.search }}">
+            {% endif %}
+          </form>
+          </div>
       </div>
 
       {% capture 'query_regex' %}/{{ query }}/i{% endcapture %}
+      {% capture 'category_param' %}{{ params.category | capitalize }}{% endcapture %}
         
       <div class="row">
-          {% with_scope publication_date.lte: now, naam: query_regex %}
-            {% unless contents.podcasts.count == 0 %}
-              {% paginate contents.podcasts by 9 %}
-                {% for podcast in paginate.collection %}
-
-                  <div class="col-4 col-md-6 col-sm-12">
-                    {% include 'card_podcast' with podcast: podcast %}
-                  </div>
-
-                {% endfor %}
-
-                <div class="col-12">
-                  {{ paginate | default_pagination }}
-                </div>
-              {% endpaginate %}
-            {% else %}
-              <div class="col-12">            
-                Geen resultaten voor: {{ params.search }}
-              </div>
-            {% endunless %}
+        {% if params.category and params.category != "" %}
+          {% with_scope publication_date.lte: now, naam: query_regex, categorie: category_param %}        
+            {% include archive_loop %}
           {% endwith_scope %}
+        {% else %}
+          {% with_scope publication_date.lte: now, naam: query_regex %}
+            {% include archive_loop %}          
+          {% endwith_scope %}
+        {% endif %}
       </div>
     </section>
   </div>

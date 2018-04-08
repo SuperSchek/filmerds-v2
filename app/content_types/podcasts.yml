@@ -28,7 +28,7 @@ public_submission_enabled: true
 # Control the display of the content type in the back-office.
 display_settings:
   seo: true              # display the SEO tab for the content entries
-  advanced: false         # display the Advanced tab for the content entries
+  advanced: true         # display the Advanced tab for the content entries
   position: 1             # position in the sidebar menu
   hidden: false           # hidden for authors?
 
@@ -43,6 +43,7 @@ fields:
     hint: Naam van de aflevering
     localized: false
 
+# When adding new categroies make sure to add them in the filter on the /archive page as well!!!
 - categorie:
     label: categorie
     type: select
@@ -98,3 +99,10 @@ fields:
     required: false
     localized: false
     type: integer
+
+- podcast_length:
+    label: Podcast length
+    hint: De API berekend deze waarde, NIET AANPASSEN!
+    required: false
+    localized: false
+    type: string

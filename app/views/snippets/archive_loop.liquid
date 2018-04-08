@@ -1,0 +1,22 @@
+{% unless contents.podcasts.count == 0 %}
+
+    {% paginate contents.podcasts by 9 %}
+        {% for podcast in paginate.collection %}
+            <div class="col-4 col-md-6 col-sm-12">
+                {% include 'card_podcast' with podcast: podcast %}
+            </div>
+        {% endfor %}
+        <div class="col-12">
+            {{ paginate | default_pagination }}
+        </div>
+    {% endpaginate %}
+
+{% else %}
+
+    <div class="col-12">
+        {% if params.search or params.category %} 
+            {% include search_string_builder with noresults_catch: true %}            
+        {% endif %}
+    </div>
+
+{% endunless %}
