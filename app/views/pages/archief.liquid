@@ -27,15 +27,21 @@ editable_elements:
     <section class="archief pt-50 pb-50">
       <div class="row">
         <div class="col-12">
-          <h2>
             {% if params.search or params.category %}
-              {% include search_string_builder %}
+              <h2>{% include search_string_builder %}</h2>
             {% else %}
-              {% editable_text "Heading Tekst" %}
-                Doorzoek de Filmerds lore!
-              {% endeditable_text %}
+              <h2>
+                {% editable_text "Heading Tekst", rows: 1 %}
+                  Doorzoek de Filmerds lore!
+                {% endeditable_text %}
+              </h2>
+
+              <p>
+                {% editable_text "Paragraph Tekst", rows: 5 %}
+                  Wij maken al sinds maart 2016 wekelijks videopodcasts. Zie hier ons mega archief met alle oude Filmerds afleveringen! Je hebt zelfs de mogelijkheid om de afleveringen te filteren op format.
+                {% endeditable_text %}
+              </p>
             {% endif %}
-          </h2>
         </div>        
       </div>
 
