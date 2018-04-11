@@ -37,7 +37,7 @@ page = 1
 while page do
   podcasts = site_client.contents.podcasts.all({}, page: page)
   podcasts.each do |podcast|
-    if (podcast.podcast_length.nil?)
+    if (podcast.podcast_length.nil? || podcast.podcast_length.length < 1)
       # We're gonna get to work
       puts "----------------------------------------------"
       puts "Setting duration for " + podcast.categorie + " | " + podcast.naam

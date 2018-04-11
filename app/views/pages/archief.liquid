@@ -27,7 +27,9 @@ editable_elements:
     <section class="archief pt-50 pb-50">
       <div class="row">
         <div class="col-12">
-            {% if params.search or params.category %}
+            {% if params.category and params.category != "" %}
+              <h2>{% include search_string_builder %}</h2>
+            {% elsif params.search and params.search != "" %}
               <h2>{% include search_string_builder %}</h2>
             {% else %}
               <h2>

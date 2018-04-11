@@ -81,6 +81,7 @@ content_type: podcasts
               class="youtube-player"
               layout="responsive"
               data-videoid="{{ youtube_id }}"
+              data-param-widget_referrer="{{ url }}"
               {% if site.metafields.misc_settings.autoplay == true %}autoplay{% endif %}>
             </amp-youtube>
           </div>

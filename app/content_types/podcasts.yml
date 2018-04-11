@@ -27,8 +27,8 @@ public_submission_enabled: true
 
 # Control the display of the content type in the back-office.
 display_settings:
-  seo: true              # display the SEO tab for the content entries
-  advanced: true         # display the Advanced tab for the content entries
+  seo: true               # display the SEO tab for the content entries
+  advanced: true          # display the Advanced tab for the content entries
   position: 1             # position in the sidebar menu
   hidden: false           # hidden for authors?
 
@@ -55,7 +55,7 @@ fields:
       "Interview",
       "Praattafel",
       "Preview",
-    "Review",
+      "Review",
       "Special",
       "Statafel",
       "Stelling",
