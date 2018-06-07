@@ -89,6 +89,10 @@ misc_settings:
       type: boolean
       label: YouTube Autoplay
       hint: Autoplay YouTube video op de podcast pagina
+    site_verification_code:
+      type: string
+      label: Google Site Verification code (Webmaster Tools)
+      hint: Zie https://www.google.com/webmasters/verification
     production:
       type: boolean
       label: Production

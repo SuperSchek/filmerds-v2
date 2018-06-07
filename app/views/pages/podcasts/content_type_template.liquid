@@ -18,6 +18,8 @@ content_type: podcasts
 
     {% capture youtube_id %}{{ podcast.youtube_url | split: 'https://www.youtube.com/watch?v=' }}{% endcapture %}
 
+    <meta name="google-site-verification" content="{{ site.metafields.misc_settings.site_verification_code }}" />
+
     <!-- OpenGraph Data -->
     <meta property="og:title" content="Filmerds - {{ podcast.categorie }} | {{ podcast.naam }}" />
     <meta property="og:type" content="article" />
