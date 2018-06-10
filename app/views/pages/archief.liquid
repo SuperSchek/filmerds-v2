@@ -7,6 +7,9 @@ published: true
 is_layout: false
 editable_elements:
   main/Heading Tekst: Doorzoek de Filmerds lore!
+  main/Paragraph Tekst: Wij maken al sinds maart 2016 wekelijks videopodcasts. Zie
+    hier ons mega archief met alle oude Filmerds afleveringen! Je hebt zelfs de mogelijkheid
+    om de afleveringen te filteren op format.
 ---
 {% action "Query archive" %}
   if (params.search) {
@@ -44,7 +47,7 @@ editable_elements:
                 {% endeditable_text %}
               </p>
             {% endif %}
-        </div>        
+        </div>
       </div>
 
 
@@ -95,7 +98,6 @@ editable_elements:
               <option value="Terugblik" {% if params.category == "Terugblik" %}selected{% endif %}>Terugblik</option>
               <option value="Voorbeschouwing" {% if params.category == "Voorbeschouwing" %}selected{% endif %}>Voorbeschouwing</option>
               <option value="Vooruitblik" {% if params.category == "Vooruitblik" %}selected{% endif %}>Vooruitblik</option>
-              {% comment %} <option value="Filmerds in het kort">Filmerds in het kort</option> {% endcomment %}
             </select>
 
             {% if params.search %}
