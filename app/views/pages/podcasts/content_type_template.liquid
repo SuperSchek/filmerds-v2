@@ -71,7 +71,7 @@ content_type: podcasts
         {% include tracking_body %}
     {% endif %}
 
-    {% include navigation with back: true %}    
+    {% include navigation with back: true %}
 
     <div class="container">
       <section class="pt-90">
@@ -98,15 +98,15 @@ content_type: podcasts
             <strong class="secondary">{{ podcast.publication_date | date: '%d-%m-%Y' }}</strong>
           </span>
 
-          <span>{{ podcast.omschrijving }}<span>
-
-          <div style="margin-top: 15px; font-size: 90%; ">
-            <span>Luister deze aflevering via </span>
-            <a href="{{ site.metafields.social_media.itunes_url }}" target="_blank">iTunes</a><span>,</span>
-            <a href="https://overcast.fm/itunes1098182855/filmerds" target="_blank">Overcast</a>
-            <span>of</span>
-            <a href="{{ podcast.s3_url }}" target="_blank">direct download</a><span>!</span>
+          <div style="margin-top: 10px; font-size: 90%; ">
+            <span>Luister deze aflevering via: </span>
+            <a class="btn-podcast" href="{{ site.metafields.social_media.itunes_url }}" target="_blank">iTunes</a>
+            <a class="btn-podcast" href="https://overcast.fm/itunes1098182855/filmerds" target="_blank">Overcast</a>
+            <a class="btn-podcast" href="{{ podcast.s3_url }}" target="_blank">direct download</a>
           </div>
+
+          <br />
+          <span>{{ podcast.omschrijving }}</span>
         </div>
       </div>
 

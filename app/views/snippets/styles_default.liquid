@@ -273,9 +273,6 @@
   .card .description {
     overflow: hidden;
     text-overflow: ellipsis;
-   /* display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;*/
     max-height: 3em;
     margin-top: 10px;
   }
@@ -438,6 +435,15 @@
     color: #385c80;
   }
 
+  .btn-podcast {
+    border: 1px solid #385c80;
+    padding: 1px 5px 3px 5px;
+    color: #385c80;
+    transition: all .15s ease-in;
+    margin-right: 3px;
+    text-decoration: none;
+  }
+
   .active-mob {
     text-decoration: underline;
   }
@@ -506,7 +512,7 @@
     }
 
     .btn-secondary {
-      transition: all .2s ease-in-out;
+      transition: all .15s ease-in-out;
     }
 
     .btn-watch {
@@ -615,6 +621,11 @@
     }
 
     .pagination a:hover {
+      color: #fff;
+      background: #385c80;
+    }
+
+    .btn-podcast:hover {
       color: #fff;
       background: #385c80;
     }
