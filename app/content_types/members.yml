@@ -43,6 +43,12 @@ fields:
     required: true
     localized: false
 
+- subtitle: # The lowercase, underscored name of the field
+    label: Subtitel # Human readable name of the field
+    type: string
+    required: false
+    localized: true
+
 - avatar:
     label: Avatar
     type: file

@@ -4,11 +4,11 @@ listed: true
 published: true
 handle: over_ons
 editable_elements:
-  main/Afbeelding: "/samples/assets/filmerds_pixel.jpg"
   main/Biografie Heading: Wij zijn Filmerds!
   main/Biografie Cpmtent: Wij zijn de mannen van Filmerds!<div><br></div><div>Twee
     keer per week brengen wij coole podcasts uit over films. Dat doen we in zowel
     video als audio formaat.</div>
+  main/Afbeelding: "/samples/pages/filmerds_pixel.jpg"
 ---
 
 {% extends 'layouts/default' %}
@@ -51,6 +51,31 @@ editable_elements:
             {% endeditable_text %}
           </p>
         </div>
+    </section>
+
+    <section>
+      <div class="row">
+        {% for member in contents.members %}
+          <div class="col-12-sm {% if forloop.even %}col-8{% else %}col-4{% endif %}">
+            {{ member.name }}
+            {{ member.subtitle }}
+            {{ member.bio }}
+          </div>
+          
+          <div class="col-12-sm {% if forloop.odd %}col-8{% else %}col-4{% endif %}">
+            {% unless member.gifs.empty? %}
+              {% assign gif_nr = member.gifs.count | random | plus: 1 %}
+              {% for gif in member.gifs %}
+                {% if forloop.index == gif_nr %}
+                    <img src="{{ gif.gif.url }}" alt="{{ member.name }}">
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <img src="{{ member.avatar.url }}" alt="{{ member.name }}">              
+            {% endunless %}
+          </div>
+        {% endfor %}
+      </div>
     </section>
 
   </div>
