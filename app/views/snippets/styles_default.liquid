@@ -365,6 +365,58 @@
     opacity: .75;
   }
 
+  /**** About Us Page ****/
+  .about h1 {
+    margin: 0 0 10px;
+  }
+
+  .about p {
+    margin-top: 0`;
+  }
+
+  .row--member {
+    display: flex;
+  }
+
+  .row--member:nth-child(odd) {
+    flex-direction: column-reverse;
+  }
+
+  .row--member:nth-child(even) {
+    flex-direction: column;
+  }
+
+   @media only screen and (min-width: 45em) {  /* 720px */
+    .row--member:nth-child(odd),
+    .row--member:nth-child(even) {
+      flex-direction: row;
+    }
+  }
+
+  .member__bio h3 {
+    margin-top: 0;
+  }
+
+  .member__bio h5 {
+    margin: 0 0 10px;
+  }
+
+  .member__bio p {
+    font-weight: 300;
+  }
+
+  .member__thumbnail picture {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .member__thumbnail picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   /**** Contact Page ****/
   .contact-input {
     font-family: 'Lato', Helvetica, sans-serif;    

@@ -36,7 +36,7 @@ editable_elements:
       </div>
     </section>
 
-    <section>
+    <section class="about">
       <div class="row">
         <div class="col-12">
           <h1>
@@ -53,29 +53,43 @@ editable_elements:
         </div>
     </section>
 
-    <section>
-      <div class="row">
+    <section class="members">
         {% for member in contents.members %}
-          <div class="col-12-sm {% if forloop.even %}col-8{% else %}col-4{% endif %}">
-            {{ member.name }}
-            {{ member.subtitle }}
-            {{ member.bio }}
-          </div>
-          
-          <div class="col-12-sm {% if forloop.odd %}col-8{% else %}col-4{% endif %}">
-            {% unless member.gifs.empty? %}
-              {% assign gif_nr = member.gifs.count | random | plus: 1 %}
-              {% for gif in member.gifs %}
-                {% if forloop.index == gif_nr %}
-                    <img src="{{ gif.gif.url }}" alt="{{ member.name }}">
-                {% endif %}
-              {% endfor %}
+          {% capture bio %}
+            <div class="col-12-sm col-8 member__bio">
+              <h3>{{ member.name }}</h3>
+              <h5>{{ member.subtitle }}</h5>
+              {{ member.bio }}
+            </div>
+          {% endcapture %}
+
+          {% capture avatar %}
+            <div class="col-12-sm col-4 member__thumbnail">
+             <picture>
+              {% unless member.gifs.empty? %}
+                {% assign gif_nr = member.gifs.count | random | plus: 1 %}
+                {% for gif in member.gifs %}
+                  {% if forloop.index == gif_nr %}
+                      <img src="{{ gif.gif.url }}" alt="{{ member.name }}">
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                <img src="{{ member.avatar.url }}" alt="{{ member.name }}">              
+              {% endunless %}
+             </picture>
+            </div>
+          {% endcapture %}
+
+          <div class="row row--member">
+            {% if forloop.index == 1 or forloop.index == 3 %}
+              {{ bio }}
+              {{ avatar }}
             {% else %}
-              <img src="{{ member.avatar.url }}" alt="{{ member.name }}">              
-            {% endunless %}
+              {{ avatar }}
+              {{ bio }}
+            {% endif %}            
           </div>
         {% endfor %}
-      </div>
     </section>
 
   </div>
