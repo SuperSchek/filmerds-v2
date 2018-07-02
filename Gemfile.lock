@@ -190,7 +190,7 @@ GEM
     rack-rewrite (1.5.1)
     rack_csrf (2.6.0)
       rack (>= 1.1.0)
-    rb-fsevent (0.9.8)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ref (2.0.0)
@@ -218,7 +218,7 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.12)
+    uglifier (4.1.14)
       execjs (>= 0.3.0, < 3)
 
 PLATFORMS
