@@ -41,5 +41,5 @@ fields:
     label: Url # Human readable name of the field
     type: string
     required: true
-    hint: Explanatory text displayed in the back office
+    hint: 'Alleen 16:9. Url in dit formaat: https://www.instagram.com/p/Bg6r4i5llu9/?taken-by=filmerds'
     localized: false
