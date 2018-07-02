@@ -1,5 +1,6 @@
 log/
 config/deploy.yml
+config/site.yml
 data/
 scripts/client_secret.json
 scripts/*.jpg

@@ -71,43 +71,33 @@ editable_elements:
       </div>
     </section>
 
-    <section>
+    <section class="section section--instagram">
       <div class="row">
         <div class="col-12">      
           <h2>
-            Filmerds op Instagram!
+            {% editable_text 'Instgram', format: raw, rows: 1 %}
+              Filmerds op Instagram!
+            {% endeditable_text %}
           </h2>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-4">
-          <amp-instagram
-            data-shortcode="Bg32I3PlSDy"
-            data-captioned
-            width="400"
-            height="400"
-            layout="responsive">
-          </amp-instagram>
-        </div>
-        <div class="col-4">
-          <amp-instagram
-            data-shortcode="Bfgp-fgleiT"
-            data-captioned
-            width="400"
-            height="400"
-            layout="responsive">
-          </amp-instagram>
-        </div>
-        <div class="col-4">
-          <amp-instagram
-            data-shortcode="fBwFP"
-            data-captioned
-            width="400"
-            height="400"
-            layout="responsive">
-          </amp-instagram>
-        </div>
+        {% for post in contents.instagram_posts %}
+          {% unless forloop.index > 3 %}
+            
+            {% assign shortcode = post.url | remove: 'https://www.instagram.com/p/' | remove: '/?taken-by=filmerds' %}
+            <div class="col-4 col-sm-12">
+              <amp-instagram
+                data-shortcode="{{ shortcode }}"
+                width="1"
+                height="1"
+                layout="responsive">
+              </amp-instagram>
+            </div>
+
+          {% endunless %}
+        {% endfor %}
       </div>
     </section>
 
