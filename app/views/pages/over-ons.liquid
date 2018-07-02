@@ -60,7 +60,7 @@ editable_elements:
     <section class="members">
         {% for member in contents.members %}
           {% capture bio %}
-            <div class="col-12-sm col-8 member__bio">
+            <div class="col-12-sm col-9 member__bio">
               <h3>{{ member.name }}</h3>
               <h5>{{ member.subtitle }}</h5>
               {{ member.bio }}
@@ -68,7 +68,7 @@ editable_elements:
           {% endcapture %}
 
           {% capture avatar %}
-            <div class="col-12-sm col-4 member__thumbnail">
+            <div class="col-12-sm col-3 member__thumbnail">
              <picture>
               {% unless member.gifs.empty? %}
                 {% assign gif_nr = member.gifs.count | random | plus: 1 %}
