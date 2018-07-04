@@ -48,6 +48,7 @@ fields:
     label: categorie
     type: select
     select_options: [
+      "Monoloog",
       "Discussie",
       "Favorieten",
       "Filmnieuws",
