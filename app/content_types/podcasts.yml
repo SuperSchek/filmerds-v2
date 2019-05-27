@@ -63,7 +63,8 @@ fields:
       "Terugblik",
       "Voorbeschouwing",
       "Vooruitblik",
-      "Filmerds in het kort"
+      "Filmerds in het kort",
+      "Podcast"
       ]
     required: false
 
