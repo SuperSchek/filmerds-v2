@@ -17,7 +17,7 @@ order_by: publication_date
 order_direction: desc
 
 # Specify a field slug to group entries by that field in the back-office.
-group_by: categorie
+# group_by: categorie
 
 # Activate public 'create' API (e.g for a contact form)
 public_submission_enabled: true
