@@ -54,6 +54,7 @@ fields:
       "Filmnieuws",
       "Het oeuvre van",
       "Interview",
+      "Lange Podcast",
       "Praattafel",
       "Preview",
       "Review",
@@ -64,7 +65,6 @@ fields:
       "Voorbeschouwing",
       "Vooruitblik",
       "Filmerds in het kort",
-      "Podcast"
       ]
     required: false
 
