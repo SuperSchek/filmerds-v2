@@ -38,7 +38,7 @@ response_type: application/xml
           <item>
             <itunes:episodeType>full</itunes:episodeType>
             <itunes:title>{{ episode.categorie }} | {{ episode.naam | escape }}</itunes:title>
-            {% if episode.categorie != "Podcast" %}
+            {% if podcast.categorie != "Podcast" %}
               <title>{{ episode.categorie }} | {{ episode.naam | escape }}</title>
             {% else %}
               <title>{{ episode.naam | escape }}</title>

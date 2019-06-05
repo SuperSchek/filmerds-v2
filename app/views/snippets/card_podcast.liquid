@@ -13,7 +13,11 @@
     </a>
 
     <h4 style="margin: 10px 0 0">
-        {{ podcast.categorie }} | {{ podcast.naam }}
+        {% if podcast.categorie != "Podcast" %}
+            {{ podcast.categorie }} | {{ podcast.naam }}
+        {% else %}
+            {{ podcast.naam }}
+        {% endif %}
     </h4>
 
     <span class="secondary">
