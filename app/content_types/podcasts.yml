@@ -65,7 +65,6 @@ fields:
       "Voorbeschouwing",
       "Vooruitblik",
       "Filmerds in het kort",
-      "Podcast"
       ]
     required: false
 
