@@ -38,7 +38,7 @@ response_type: application/xml
           <item>
             <itunes:episodeType>full</itunes:episodeType>
             <itunes:title>{{ episode.categorie }} | {{ episode.naam | escape }}</itunes:title>
-            {% if podcast.categorie != "Podcast" %}
+            {% if episode.categorie != "Podcast" %}
               <title>{{ episode.categorie }} | {{ episode.naam | escape }}</title>
             {% else %}
               <title>{{ episode.naam | escape }}</title>
@@ -46,7 +46,7 @@ response_type: application/xml
             <itunes:author>{{ site.metafields.rss_settings.author | escape }}</itunes:author>
             <itunes:summary>{{ episode.omschrijving | escape }}</itunes:summary>
             <description>{{ episode.omschrijving | escape }}</description>
-            <enclosure length="{{ episode.s3_filesize }}" type="audio/mpeg" url="{{ episode.s3_url | escape }}"/>
+            <enclosure length="{{ episode.s3_filesize }}" type="audio/mpeg" url="https://chtbl.com/track/8GD5E/{{ episode.s3_url | escape }}"/>
             <guid>https://www.filmerds.com{% path_to episode %}</guid>
             <link>https://www.filmerds.com{% path_to episode %}</link>
             <pubDate>{{ episode.publication_date | date: '%a, %d %b %Y %H:%M:%S' }} +0100</pubDate>
