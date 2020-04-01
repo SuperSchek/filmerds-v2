@@ -1,0 +1,63 @@
+---
+title: Filmquiz
+slug: filmquiz
+position: 99
+listed: false
+published: true
+is_layout: false
+---
+
+{% extends 'layouts/default' %}
+
+{% block 'main' %}
+  {% include navigation %}
+  
+  <div class="container">
+    <section class="filmquiz pt-50" style="padding-top: 90px;">
+      <div class="row">
+        <div class="col-12">
+          <amp-youtube class="youtube-player"
+                        width="1920"
+                        height="1080"
+                        class="youtube-player"
+                        layout="responsive"
+                        data-videoid="iYPsOJmQ9h0"
+                        data-param-loop="0"
+                        data-param-playlist="g6U20NFRd8w"
+                        data-param-widget_referrer="{{ url }}"
+                        data-param-modestbranding="1"
+                        autoplay>
+            </amp-youtube>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-50">
+      <div class="row">
+        <div class="col-12">      
+          <h2>
+            Filmerds gaat live!      
+          </h2>
+
+          <p>
+            Wie jarig is trakteert, en nu we allemaal niet zo makkelijk bij elkaar kunnen komen, laten we dan nu VOORAL lekker bij elkaar komen, digitaal dan wel te verstaan.
+          </p>
+
+          <p>
+            Daarom hebben wij iets bedacht, de Filmerds Filmquiz! Wij hosten volgende week woensdag 8 april om 20:00 een spelshow waarbij in ieder geval de mannen van <a href="https://www.facebook.com/ChezGeeque/" target="_blank">Chez Geeque</a>, <a href="https://www.facebook.com/duimpjeworstelen" target="_blank">Duimpjeworstelen Filmpodcast</a>, <a href="https://www.instagram.com/dinnerandamovie_mag/" target="_blank">@dinnerandamovie_mag</a>, <a href="https://www.facebook.com/filmfanspodcast/" target="_blank">Film Fans Podcast</a>, <a href="https://www.instagram.com/cinemarieke/" target="_blank">Cinemarieke</a> en <a href="https://www.facebook.com/ImanKijkt/" target="_blank">ImanKijkt</a> tegen elkaar gaan spelen om de eeuwige roem. Hoe meer zielen, hoe meer vreugde, dus zijn we ook aan het uitzoeken hoe we deze quiz naar jullie gaan live streamen zodat jullie thuis ook mee kunnen doen! Hou onze socials in de gaten en meld je alvast aan.
+          </p>
+        </div>        
+      </div>
+
+      <div class="row">
+        <div class="fw center pt-25">
+          <a class="btn-nav" style="margin-right: 10px;" href="https://www.youtube.com/channel/UCQtXVEMsLDGNCdoJ9TmCLJg" target="_blank">YouTube</a>
+          <a class="btn-nav" style="margin-right: 10px; margin-top: 15px;" href="https://podcasts.apple.com/nl/podcast/filmerds/id1098182855" target="_blank">Apple Podcasts</a>
+          <a class="btn-nav" style="margin-right: 10px; margin-top: 15px;" href="https://open.spotify.com/show/7MjHJKvyJ6yo0N0e8ciKh1?si=FAlhidzsT2W_3tX_Oq9G5Q" target="_blank">Spotify</a>
+          <a class="btn-nav" style="margin-top: 15px;" href="https://www.facebook.com/events/1111131945939345/" target="_blank">Facebook Event</a>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
+

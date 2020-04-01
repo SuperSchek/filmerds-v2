@@ -37,19 +37,20 @@ metafields:
     copyright: "&#xA9; 2019 Filmerds"
     owner_name: Sander Schekman
     owner_email: aaschekman@icloud.com
-    explicit: '1'
+    explicit: "1"
     type: episodic
     author: Sander Schekman, Henk van der Velden en Pim Meijerman
-    description: Filmerds is een maandelijkse podcast voor en door liefhebbers van
+    description:
+      Filmerds is een maandelijkse podcast voor en door liefhebbers van
       film! We brengen maandelijks een lange podcast uit, met daarin reviews en andere
       film gerelateerde content. Ook nemen wij de aankomende releases door in samenwerking
       met Filmdomein. Naast deze lange podcast kan je ook speciale afleveringen van
       ons verwachten. Toffe samenwerkingen, rare lijstjes, pittige spelletjes en andere
       formats. Dus hou onze social media in de gaten!
   misc_settings:
-    autoplay: '0'
-    production: '1'
-    bio: '0'
+    autoplay: "0"
+    production: "0"
+    bio: "0"
     site_verification_code: _XmBQbPrFj1LCIIySJsqTaQQFBGagbXfDf99yHV5eFY
   social_media:
     youtube_url: https://www.youtube.com/channel/UCQtXVEMsLDGNCdoJ9TmCLJg
