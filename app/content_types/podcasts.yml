@@ -27,84 +27,86 @@ public_submission_enabled: true
 
 # Control the display of the content type in the back-office.
 display_settings:
-  seo: true               # display the SEO tab for the content entries
-  advanced: true          # display the Advanced tab for the content entries
-  position: 1             # position in the sidebar menu
-  hidden: false           # hidden for authors?
+  seo: true # display the SEO tab for the content entries
+  advanced: true # display the Advanced tab for the content entries
+  position: 1 # position in the sidebar menu
+  hidden: false # hidden for authors?
 
 # By default, the back-office displays the _label property (see label_field_name) of the content entry. This can be modified by writing your own Liquid template below:
 entry_template: '<a href="{{ link }}">{{ entry.categorie }} | {{ entry._label }}</a>' # The default template
 
 fields:
-- naam:
-    label: Naam
-    type: string
-    required: false
-    hint: Naam van de aflevering
-    localized: false
+  - naam:
+      label: Naam
+      type: string
+      required: false
+      hint: Naam van de aflevering
+      localized: false
 
-# When adding new categroies make sure to add them in the filter on the /archive page as well!!!
-- categorie:
-    label: categorie
-    type: select
-    select_options: [
-      "Monoloog",
-      "Discussie",
-      "Favorieten",
-      "Filmnieuws",
-      "Het oeuvre van",
-      "Interview",
-      "Lange Podcast",
-      "Praattafel",
-      "Preview",
-      "Review",
-      "Special",
-      "Statafel",
-      "Stelling",
-      "Terugblik",
-      "Voorbeschouwing",
-      "Vooruitblik",
-      "Filmerds in het kort",
-      ]
-    required: false
+  # When adding new categroies make sure to add them in the filter on the /archive page as well!!!
+  - categorie:
+      label: categorie
+      type: select
+      select_options:
+        [
+          "Monoloog",
+          "Discussie",
+          "Favorieten",
+          "Filmnieuws",
+          "Het oeuvre van",
+          "Interview",
+          "Lange Podcast",
+          "Praattafel",
+          "Preview",
+          "Review",
+          "Special",
+          "Statafel",
+          "Stelling",
+          "Terugblik",
+          "Voorbeschouwing",
+          "Vooruitblik",
+          "Filmerds in het kort",
+          "Podcast",
+        ]
+      required: false
 
-- thumbnail:
-    label: Thumbnail
-    type: file
+  - thumbnail:
+      label: Thumbnail
+      type: file
 
-- omschrijving:
-    label: Omschrijving
-    type: text
-    required: false
-    hint: Omschrijving/Shownotes
-    localized: false
+  - omschrijving:
+      label: Omschrijving
+      type: text
+      required: false
+      hint: Omschrijving/Shownotes
+      localized: false
 
-- publication_date:
-    label: Datum en tijdstip van publicatie
-    type: date_time
+  - publication_date:
+      label: Datum en tijdstip van publicatie
+      type: date_time
 
-- youtube_url:
-    label: YouTube Url
-    type: string
-    required: false
-    localized: false
+  - youtube_url:
+      label: YouTube Url
+      type: string
+      required: false
+      localized: false
 
-- s3_url:
-    label: S3 Audio File Url
-    type: string
-    required: false
-    localized: false
+  - s3_url:
+      label: S3 Audio File Url
+      type: string
+      required: false
+      localized: false
 
-- s3_filesize:
-    label: Audio filesize in bytes volgens AWS S3
-    hint: De API berekend deze waarde, NIET AANPASSEN!
-    required: false
-    localized: false
-    type: integer
+  - s3_filesize:
+      label: Audio filesize in bytes volgens AWS S3
+      hint: De API berekend deze waarde, NIET AANPASSEN!
+      required: false
+      localized: false
+      type: integer
 
-- podcast_length:
-    label: Podcast length
-    hint: De API berekend deze waarde, NIET AANPASSEN!
-    required: false
-    localized: false
-    type: string
+  - podcast_length:
+      label: Podcast length
+      hint: De API berekend deze waarde, NIET AANPASSEN!
+      required: false
+      localized: false
+      type: string

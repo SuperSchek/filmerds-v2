@@ -37,10 +37,11 @@ response_type: application/xml
         {% if episode.s3_url %}
           <item>
             <itunes:episodeType>full</itunes:episodeType>
-            <itunes:title>{{ episode.categorie }} | {{ episode.naam | escape }}</itunes:title>
             {% if episode.categorie != "Podcast" %}
+              <itunes:title>{{ episode.categorie }} {{ episode.naam | escape }}</itunes:title>
               <title>{{ episode.categorie }} {{ episode.naam | escape }}</title>
             {% else %}
+              <itunes:title>{{ episode.naam | escape }}</itunes:title>
               <title>{{ episode.naam | escape }}</title>
             {% endif %}
             <itunes:author>{{ site.metafields.rss_settings.author | escape }}</itunes:author>
