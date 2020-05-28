@@ -34,7 +34,7 @@ response_type: application/xml
 
     {% with_scope publication_date.lte: now %}
       {% for episode in contents.podcasts %}
-        {% if episode.s3_url %}
+        {% if episode.s3_url.size != 0 %}
           <item>
             <itunes:episodeType>full</itunes:episodeType>
             {% if episode.categorie != "Podcast" %}
